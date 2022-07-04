@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="front image.png" type="image/icon">
+	<title>ShivaNach: Dragon 2</title>
+	<script src="https://kit.fontawesome.com/e67d203734.js" crossorigin="anonymous"></script>
+<style>
+	@import url('https://fonts.googleapis.com/css?family=Montserrat:800|Ubuntu&display=swap');
+*{
+  scrollbar-color:#555 transparent;
+  scrollbar-width: thin;
+}
+::-webkit-scrollbar {
+  width: 7.5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius:30px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+*::selection{
+	background: #7659e8;
+	color:white;
+}
+h1{
+	font-family:'Montserrat';
+	text-transform:uppercase;
+}	
+h3{
+	font-family:'Ubuntu';
+}
+.social-icons{
+	position:fixed;
+	top:65%;
+	left:0;
+	z-index: 81;
+}
+.social-icons li{
+	list-style: none;
+	transform:translateX(-39px);
+}
+.social-icons li i{
+	transition:0.5s;
+}
+.social-icons li i:hover{
+	width:160px;
+	padding-left:60px;
+	color:black;
+}
+.social-icons li .fa-youtube{
+	box-sizing: border-box;
+	height:50px;
+	width:80px;
+	padding-top:11px;
+	padding-left:20px;
+	font-size: 30px;
+	color:white;
+	background:red;
+}
+.social-icons li .fa-reddit-alien{
+	box-sizing: border-box;
+	height:50px;
+	width:80px;
+	padding-top:11px;
+	padding-left:20px;
+	font-size: 30px;
+	color:white;
+	background:#FF2828;
+}
+.social-icons li .fa-pinterest-p{
+  box-sizing: border-box;
+  height:50px;
+  width:80px;
+  padding-top:11px;
+  padding-left:20px;
+  font-size: 30px;
+  color:white;
+  background:#FF0000;
+}
+.social-icons li .fa-instagram{
+	box-sizing:border-box;
+	height:50px;
+	width:80px;
+	padding-top:11px;
+	padding-left:20px;
+	font-size: 30px;
+	color:white;
+	background:linear-gradient(to right,orange,purple);
+}	
+	.loader{
+	position:fixed;
+	z-index: 99;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:white;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+.loader > img{
+	width:100px;
+}
+.loader.hidden{
+	animation:fadeOut 5s;
+	animation-fill-mode:forwards;
+
+}
+@keyframes fadeOut{
+
+	100%{
+		opacity:0;
+		visibility:hidden;
+	}
+}
+.stick{
+	position:sticky;
+	top:0;
+	box-sizing:border-box;
+	border:1px solid transparent;
+	background:#91c9cf;
+	z-index: 80;
+}	
+.box{
+	height:450px;
+	border-radius:10px;
+	width:400px;
+	transform: translate(0,0);
+	box-shadow:10px 10px 5px #7659e8;
+	transition:0.5s all;
+}
+.box:hover{
+	transform:scale(1.1);
+	filter: blur(2.5px);
+	transition: 0.5s all;
+}
+.box:hover ~ .content{
+	display:block;
+	transform:translateY(-250px);
+}
+.content{
+	display:none;
+	font-size:2em;
+	text-decoration:none;
+	font-family:'Montserrat';
+	text-transform:uppercase;
+	color:white;
+}
+.diffbtn{
+padding:2px;
+height:35px;
+width:340px;
+font-size:18px;
+font-family:'Ubuntu',sans-serif;
+background:#add8e6;
+margin:15px;
+border:3px solid blue;
+box-sizing:border-box;
+border-radius:10px;
+cursor:pointer;
+transition:0.5s all;
+overflow:hidden;
+}
+button {
+padding:2px;
+height:35px;
+width:290px;
+font-size:18px;
+font-family:'Ubuntu',sans-serif;
+background:#add8e6;
+margin:15px;
+border:3px solid blue;
+box-sizing:border-box;
+border-radius:10px;
+cursor:pointer;
+transition:0.5s all;
+overflow:hidden;
+}
+button:before{
+content:'';
+position:absolute;
+top:0;
+left:0;
+width:50%;
+height:100%;
+background:grey;
+z-index:-1;
+transform:scaleX(0);
+transition:transform 0.5s;
+transform-origin:right;
+}
+button:after{
+content:'';
+position:absolute;
+top:0;
+right:0;
+width:50%;
+height:100%;
+background:grey;
+z-index:-1;
+transform:scaleX(0);
+transition:transform 0.5s;
+transform-origin:left;
+}
+button:hover{
+border:3px solid black;
+transform:translateX(0);
+color:white;
+}
+button:hover:before{
+transform:scaleX(1);
+transition:transform 0.5s;
+transform-origin:left;
+}
+button:hover:after{
+transform:scaleX(1);
+transition:transform 0.5s;
+transform-origin:right;
+}	
+.tab{
+	box-shadow:10px 10px 5px #7659e8;
+	padding:5px;
+	border-radius:10px;
+	border:3px solid #7659e8;
+}
+.gea,th{
+	padding:10px;
+	border:2px solid #7659e8;
+}
+td,th{
+font-weight:400;
+font-size:20px;
+font-family:'Ubuntu',sans-serif;
+}
+table{
+	padding:5px;
+}
+@media only screen and (max-width:480px) {
+	.social-icons{
+		display:none;
+	}
+	.stick{
+		position:static;
+		width:100%;
+	}
+	.no{
+		display:none;
+	}
+	table{
+		width:100%;
+	}
+	.box{
+		width:100%;
+	}
+}
+@media only screen and (min-width:481px) and (max-width: 900px) {
+	.social-icons{
+		display:none;
+	}
+	.stick{
+		position:static;
+		width:100%;
+	}
+	.no{
+		display:none;
+	}
+	table{
+		width:100%;
+	}
+	.box{
+		width:100%;
+	}
+}
+</style>	
+</head>
+<body>
+<script type="text/javascript">
+	window.addEventListener("load",function() {
+		const loader = document.querySelector(".loader");
+		console.log(loader);
+		loader.className += " hidden";
+	});
+</script>
+	<div class="loader">
+	<img src="logo for me.gif" alt="Loading...">		
+	</div>
+	<br>
+	<br>
+	<div class="stick"><center><a href="index.html"><button>Cilck here for homepage</button></a><a href="falcon-9.html"><button>Cilck here for Falcon 9 Rockets</button></a><a href="falconheavy.html"><button class="diffbtn">Cilck here for Falconheavy Rockets</button></a></center></div>
+	<div class="social-icons">
+   <ul>
+   <a href="https://www.youtube.com/shivanach45"target="_blank"><li><i class="fab fa-youtube"></i></a></li>
+   <a href="https://www.reddit.com/user/Shiva_Nach" target="_blank"><li><i class="fab fa-reddit-alien"></i></li></a>
+   <a href="https://www.instagram.com/shivanach45/" target="_blank"><li><i class="fab fa-instagram"></i></a></li>
+   <a href="https://www.pinterest.ca/nach0182/" target="_blank"><li><i class="fab fa-pinterest-p"></i></li></a>
+   </ul> 	
+</div>	
+	<br>
+	<br>
+			<center><h1>Dragon 2 Spacecraft</h1></center>
+	<br>
+	<br>
+	<center>
+	<img src="dragon.jpg" class="box">
+		<a href="https://en.wikipedia.org/wiki/Dragon_2" class="content">Dragon 2 Spacecraft</a>
+    </center>
+	<br>
+	<br>
+	<center>
+		<table width="805">
+			<tr>
+				<td>Dragon 2 or Crew Dragon is a reusable spacecraft developed and manufactured by SpaceX.The space launches atop a Flacon 9 Block 5 rocket and returns via ocean splash down.The Dragon has a large windows and new flight computers and solar arrays than the Dragon.There are two variations of this spacecraft,one for a crew and one for the cargo of the parts,satellites,etc.The crew Dragon has an integrated escape system which allows the astronaut to escape in an emergency.The designed life of dragon is 1 week(free flight) and 210 days when docked to ISS.It has a dry mass of 10,000kg and a payload of 6,000kg.7 people can sit in this machine.It has a diameter of 4m and height of 8.1m with a side wall angle of 15 degrees.</td>
+			</tr>
+		</table>
+	</center>
+	<br>
+<div class="no">
+	<center><h3><i>Now,let's see the Launch outcome of this Spacecraft</i></h3></center>
+	<br>
+	<br>
+	<center>
+		<table border="1" class="tab">
+			<tr> 	
+				<th>Mission</th>
+				<th>Capsule No.</th>
+				<th>Launch Date</th>
+				<th>Outcome</th>
+			</tr>
+			<tr>
+				<td class="gea">Dragon 2 pad abort test</td>
+				<td class="gea">Dragon Fly</td>
+				<td class="gea">6th May 2015</td>
+				<td class="gea" bgcolor="#40E719">Success</td>
+			</tr>
+			<tr>
+				<td class="gea">SpX-DM1</td>
+				<td class="gea">C201</td>
+				<td class="gea">2nd March 2019</td>
+				<td class="gea" bgcolor="#40E719">Success</td>
+			</tr>
+		</table>
+	</center>
+</div>
+	<br>
+	<br>
+	<br>
+	<br>
+</body>
+</html>

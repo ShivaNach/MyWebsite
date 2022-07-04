@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/icon" href="front image.png">
+	<title>ShivaNach:Portfolio</title>
+	<script src="https://kit.fontawesome.com/e67d203734.js" crossorigin="anonymous"></script>
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css?family=Montserrat:800|Ubuntu&display=swap');
+
+		* {
+			scrollbar-color: #fff transparent;
+			scrollbar-width: thin;
+		}
+
+		::-webkit-scrollbar {
+			width: 7.5px;
+		}
+
+		::-webkit-scrollbar-track {
+			background: transparent;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: #fff;
+			border-radius: 30px;
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+			background: #ccc;
+		}
+
+		*::selection {
+			background: #7659e8;
+			color: white;
+		}
+
+		body {
+			background: #5A5A5A;
+		}
+
+		h1 {
+			color: white;
+			font-family: 'Montserrat';
+			text-transform: uppercase;
+		}
+
+		td {
+			font-family: 'Ubuntu', sans-serif;
+			color: white;
+			font-size: 22px;
+		}
+
+		.social-icons {
+			position: fixed;
+			top: 65%;
+			left: 0;
+			z-index: 81;
+		}
+
+		.social-icons li {
+			list-style: none;
+			transform: translateX(-39px);
+		}
+
+		.social-icons li i {
+			transition: 0.5s;
+		}
+
+		.social-icons li i:hover {
+			width: 160px;
+			padding-left: 60px;
+			color: black;
+		}
+
+		.social-icons li .fa-youtube {
+			box-sizing: border-box;
+			height: 50px;
+			width: 80px;
+			padding-top: 11px;
+			padding-left: 20px;
+			font-size: 30px;
+			color: white;
+			background: red;
+		}
+
+		.social-icons li .fa-reddit-alien {
+			box-sizing: border-box;
+			height: 50px;
+			width: 80px;
+			padding-top: 11px;
+			padding-left: 20px;
+			font-size: 30px;
+			color: white;
+			background: #FF2828;
+		}
+
+		.social-icons li .fa-pinterest-p {
+			box-sizing: border-box;
+			height: 50px;
+			width: 80px;
+			padding-top: 11px;
+			padding-left: 20px;
+			font-size: 30px;
+			color: white;
+			background: #FF0000;
+		}
+
+		.social-icons li .fa-instagram {
+			box-sizing: border-box;
+			height: 50px;
+			width: 80px;
+			padding-top: 11px;
+			padding-left: 20px;
+			font-size: 30px;
+			color: white;
+			background: linear-gradient(to right, orange, purple);
+		}
+
+		.io,
+		.parallax,
+		.no {
+			opacity: 0.6;
+			border-radius: 10px;
+			box-shadow: 0px 8px 10px 0px #7569E8;
+		}
+
+		.loader {
+			position: fixed;
+			z-index: 99;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.loader>img {
+			width: 100px;
+		}
+
+		.loader.hidden {
+			animation: fadeOut 5s;
+			animation-fill-mode: forwards;
+
+		}
+
+		@keyframes fadeOut {
+
+			100% {
+				opacity: 0;
+				visibility: hidden;
+			}
+		}
+
+		.btn {
+			padding: 2px;
+			height: 35px;
+			width: 290px;
+			font-size: 18px;
+			font-family: 'Ubuntu', sans-serif;
+			background: #add8e6;
+			margin: 15px;
+			border: 3px solid blue;
+			box-sizing: border-box;
+			border-radius: 10px;
+			cursor: pointer;
+			transition: 0.5s all;
+			overflow: hidden;
+		}
+
+		.btn:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 50%;
+			height: 100%;
+			background: grey;
+			z-index: -1;
+			transform: scaleX(0);
+			transition: transform 0.5s;
+			transform-origin: right;
+		}
+
+		.btn:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 50%;
+			height: 100%;
+			background: grey;
+			z-index: -1;
+			transform: scaleX(0);
+			transition: transform 0.5s;
+			transform-origin: left;
+		}
+
+		.btn:hover {
+			border: 3px solid black;
+			transform: translateX(0);
+			color: white;
+		}
+
+		.btn:hover:before {
+			transform: scaleX(1);
+			transition: transform 0.5s;
+			transform-origin: left;
+		}
+
+		.btn:hover:after {
+			transform: scaleX(1);
+			transition: transform 0.5s;
+			transform-origin: right;
+		}
+
+		.stick {
+			position: sticky;
+			top: 0;
+			box-sizing: border-box;
+			border: 1px solid transparent;
+			background: #91c9cf;
+			z-index: 88;
+		}
+
+		h4 {
+			color: white;
+			font-family: 'Montserrat';
+			text-transform: uppercase;
+			font-size: 1.5em;
+		}
+
+		.no {
+			display: none;
+		}
+
+		.parallax1 {
+			background: url("First stage-2.jpg") no-repeat;
+			background-attachment: fixed;
+			background-size: 100% auto;
+			background-repeat: no-repeat;
+		}
+
+		.parallax2 {
+			background: url("first stage-3.jpg") no-repeat;
+			background-attachment: fixed;
+			background-size: 100% auto;
+			background-repeat: no-repeat;
+		}
+
+		.parallax3 {
+			background: url("second stage.jpg") no-repeat;
+			background-attachment: fixed;
+			background-size: 100% auto;
+			background-repeat: no-repeat;
+		}
+
+		.parallax4 {
+			background: url("first stage-second stage.jpg") no-repeat;
+			background-attachment: fixed;
+			background-size: 100% auto;
+			background-repeat: no-repeat;
+		}
+
+		.parallax5 {
+			background: url("third stage.jpg") no-repeat;
+			background-attachment: fixed;
+			background-size: 100% auto;
+			background-repeat: no-repeat;
+		}
+
+		.parallax6 {
+			background: url("first stage second stage and third.jpg") no-repeat;
+			background-attachment: fixed;
+			background-size: 100% auto;
+			background-repeat: no-repeat;
+		}
+
+		.parallax-inner {
+			padding-top: 40%;
+			padding-bottom: 40%;
+		}
+
+		/*Responsive*/
+		@media only screen and (max-width: 480px) {
+			.social-icons {
+				display: none;
+			}
+
+			table {
+				width: 100%;
+			}
+
+			.parallax {
+				display: none;
+			}
+
+			.no {
+				display: block;
+				width: 100%;
+			}
+		}
+
+		@media only screen and (min-width: 481px) and (max-width: 900px) {
+			.social-icons {
+				display: none;
+			}
+
+			table {
+				width: 100%;
+			}
+
+			.parallax {
+				display: none;
+			}
+
+			.no {
+				display: block;
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<script type="text/javascript">
+		window.addEventListener("load", function () {
+			const loader = document.querySelector(".loader");
+			console.log(loader);
+			loader.className += " hidden";
+		});
+	</script>
+	<div class="loader">
+		<img src="logo for me.gif" alt="Loading...">
+	</div>
+	<br>
+	<br>
+	<div class="stick">
+		<center><a href="index.html"><button class="btn">Cilck here for homepage</button>
+	</div>
+	<div class="social-icons">
+		<ul>
+			<a href="https://www.youtube.com/shivanach45" target="_blank">
+				<li><i class="fab fa-youtube"></i></li>
+			</a>
+			<a href="https://www.reddit.com/user/Shiva_Nach" target="_blank">
+				<li><i class="fab fa-reddit-alien"></i></li>
+			</a>
+			<a href="https://www.instagram.com/shivanach45/" target="_blank">
+				<li><i class="fab fa-instagram"></i>
+			</a></li>
+			<a href="https://www.pinterest.ca/nach0182/" target="_blank">
+				<li><i class="fab fa-pinterest-p"></i></li>
+			</a>
+		</ul>
+	</div>
+	<center>
+		<h1>Portfolio</h1>
+		<table width="850">
+			<tr>
+				<td>Hey friends! In this page, we can see the images with the description of the images given below.
+					These images are from shivanach45 YouTube channel.</td>
+			</tr>
+		</table>
+		<br>
+		<br>
+		<br>
+		<img src="first stage-1.jpg" width="100%" class="io">
+		<h4>First Stage of LEGO Saturn V Rocket</h4>
+		<table>
+			<tr>
+				<td>This is the first part of buliding the LEGO Saturn V Rocket.It took me about two hours to complete
+					this.</td>
+			</tr>
+		</table>
+		<section class="parallax1 parallax">
+			<div class="parallax-inner"></div>
+		</section>
+		<img src="First stage-2.jpg" class="no">
+		<h4>First Stage of LEGO Rocket-2</h4>
+		<table>
+			<tr>
+				<td>This is the second part of buliding the first stage of the LEGO Saturn V Rocket.It took me about 30
+					mins to complete this.</td>
+			</tr>
+		</table>
+		<section class="parallax2 parallax">
+			<div class="parallax-inner"></div>
+		</section>
+		<img src="first stage-3.jpg" class="no">
+		<h4>First Stage of LEGO Rocket-3</h4>
+		<table>
+			<tr>
+				<td>This is the third part of buliding the First Stage of LEGO Saturn V Rocket.It took me about 30 min
+					to complete this.</td>
+			</tr>
+		</table>
+		<section class="parallax3 parallax">
+			<div class="parallax-inner"></div>
+		</section>
+		<img src="second stage.jpg" class="no">
+		<h4>Second Stage of LEGO Saturn V Rocket</h4>
+		<table>
+			<tr>
+				<td>This is the second part of buliding the LEGO Saturn V Rocket.It took me about an hour to complete
+					this.</td>
+			</tr>
+		</table>
+		<section class="parallax4 parallax">
+			<div class="parallax-inner"></div>
+		</section>
+		<img src="first stage-second stage.jpg" class="no">
+		<h4>First and second stage of the Rocket</h4>
+		<table>
+			<tr>
+				<td>This is the first stage and second stage of the rocket being fixed together.</td>
+			</tr>
+		</table>
+		<section class="parallax5 parallax">
+			<div class="parallax-inner"></div>
+		</section>
+		<img src="third stage.jpg" class="no">
+		<h4>Thrid Stage of LEGO Saturn V Rocket</h4>
+		<table>
+			<tr>
+				<td>This is the third part of buliding the LEGO Saturn V Rocket.It took me about an hour to complete
+					this.</td>
+			</tr>
+		</table>
+		<section class="parallax6 parallax">
+			<div class="parallax-inner"></div>
+		</section>
+		<img src="first stage second stage and third.jpg" class="no">
+		<h4>First,second and third stage of the Rocket</h4>
+		<table>
+			<tr>
+				<td>This is the first,second and the third stage of the rocket assmebled together.</td>
+			</tr>
+		</table>
+		<img src="Completed rocket.jpg" width="100%" class="io">
+		<h4>The LEGO Saturn V Rocket</h4>
+		<table>
+			<tr>
+				<td>After four days of making this,I have successfully made the LEGO Saturn V Rocket by assembling all
+					the stages.</td>
+			</tr>
+		</table>
+	</center>
+</body>
+
+</html>

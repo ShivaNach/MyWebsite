@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Shiva Nach">
+  <meta name="description"
+    content="Hey friends, in this website shivanach.com, we can learn science and technology. If you want to know more about this website, Please click and check it out!">
+  <title>ShivaNach</title>
+  <script src="https://kit.fontawesome.com/e67d203734.js" crossorigin="anonymous"></script>
+  <link rel="icon" type="img/icon" href="front image.png">
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Bangers|Montserrat:800|Ubuntu&display=swap');
+
+    * {
+      scrollbar-color: #555 transparent;
+      scrollbar-width: thin;
+    }
+
+    *::selection {
+      background: #7569E8;
+      color: white
+    }
+
+    h1,
+    h2 {
+      font-family: 'Montserrat';
+      text-transform: uppercase;
+    }
+
+    h4 {
+      position: fixed;
+      top: 10%;
+      color: #eee;
+      left: 25%;
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 25px;
+      padding: 5px 0 5px 0;
+      box-sizing: border-box;
+      border: none;
+      background: #047077;
+      border-radius: 30px;
+      width: 600px;
+      z-index: 95;
+      transition: 0.5s;
+    }
+
+    h4:hover {
+      color: black;
+      background: #00E8FD;
+      padding: 10px 0px;
+      transition: 0.5s;
+    }
+
+    .closebtn {
+      color: white;
+      z-index: 95;
+      padding: 0 8px 1px 7px;
+      font-size: 25px;
+      font-family: 'Ubuntu';
+      background: #F95959;
+      border-radius: 100%;
+      transition: 0.5s;
+    }
+
+    .closebtn:hover {
+      color: #333;
+      transition: 0.5s;
+      cursor: default;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      padding: 0px;
+      margin: 0px;
+      transition: 0.5s;
+    }
+
+    #topBtn {
+      display: none;
+      box-sizing: border-box;
+      background: #000;
+      color: #fff;
+      padding: 20px;
+      height: 50px;
+      width: 80px;
+      position: fixed;
+      top: 90%;
+      right: 0;
+      cursor: pointer;
+      z-index: 81;
+      transition: 0.5s;
+    }
+
+    #topBtn:hover {
+      background: black;
+      color: cyan;
+      width: 120px;
+    }
+
+    td {
+      font-size: 20px;
+      font-weight: 400;
+      font-family: 'Ubuntu', sans-serif;
+    }
+
+    .topnav {
+      overflow: hidden;
+      background-color: #add8e6;
+    }
+
+    .topnav a {
+      float: left;
+      display: block;
+      color: black;
+      font-family: 'Ubuntu', sans-serif;
+      font-weight: bold;
+      text-align: center;
+      padding: 19px 20px;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    .topnav .icon {
+      display: none;
+    }
+
+    .dropdown {
+      float: left;
+      overflow: hidden;
+    }
+
+    .dropdown .dropbtn {
+      font-size: 18px;
+      border: none;
+      outline: none;
+      color: black;
+      font-family: 'Ubuntu', sans-serif;
+      font-weight: bold;
+      padding: 19px 20px;
+      background-color: inherit;
+      margin: 0;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      height: 175px;
+      overflow-y: scroll;
+      scrollbar-color: #555 transparent;
+      scrollbar-width: thin;
+      box-shadow: 0px 8px 16px 0px #7569E8;
+      z-index: 1;
+    }
+
+    ::-webkit-scrollbar {
+      width: 7.5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 30px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+
+    .dropdown-content a {
+      float: none;
+      color: black;
+      font-family: 'Ubuntu', sans-serif;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
+
+    .topnav a:hover,
+    .dropdown:hover .dropbtn {
+      background-color: #7569E8;
+      color: white;
+      transition: 0.5s;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #7569E8;
+      color: white;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .btn {
+      padding: 2px;
+      height: 50px;
+      width: 200px;
+      font-size: 25px;
+      font-family: 'Ubuntu', sans-serif;
+      font-weight: 100;
+      background: linear-gradient(to right, cyan, orange);
+      margin: 15px;
+      box-shadow: 10px 8px 16px 0px #7569E8;
+      border: 3px solid blue;
+      box-sizing: border-box;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.8s all;
+      overflow: hidden;
+    }
+
+    .btn:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, cyan, grey);
+      z-index: -1;
+      transform: scaleX(0);
+      transition: transform 0.8s;
+      transform-origin: right;
+    }
+
+    .btn:hover {
+      border: 3px solid black;
+      transform: translateY(15px);
+      color: black;
+    }
+
+    .btn .san:after {
+      content: '\00bb';
+      position: absolute;
+      opacity: 0;
+      top: 10;
+      left: 140px;
+      transition: 0.8s;
+    }
+
+    .btn:hover .san {
+      padding-right: 35px;
+    }
+
+    .btn:hover .san:after {
+      opacity: 1;
+      right: 0;
+    }
+
+    .btn:hover:before {
+      transform: scaleX(1);
+      transition: transform 0.8s;
+      transform-origin: left;
+    }
+
+    hr {
+      border: 1px solid black;
+      margin-bottom: 8px;
+    }
+
+    .event {
+      font-size: 25px;
+      color: black;
+      text-decoration: none;
+      font-family: 'Montserrat';
+    }
+
+    .eveb {
+      font-family: 'Montserrat';
+      font-size: 3em;
+      padding: 10px 15px;
+      margin: 25px;
+      margin-top: -10px;
+      border: 3px solid blue;
+      background: linear-gradient(to top, cyan, orange);
+      text-transform: uppercase;
+      border-radius: 10px;
+      cursor: pointer;
+      outline: none;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      box-shadow: 10px 8px 16px 0px #7569E8;
+      overflow: hidden;
+      display: inline-block;
+      position: relative;
+    }
+
+    .eveb:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      z-index: -1;
+      background: linear-gradient(to top, cyan, grey);
+      border-radius: 10px;
+      transform: scaleY(0);
+      transition: transform 0.5s;
+      transform-origin: top;
+    }
+
+    .eveb:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      z-index: -1;
+      background: linear-gradient(to top, cyan, grey);
+      border-radius: 10px;
+      transform: scaleY(0);
+      transition: transform 2s;
+      transform-origin: top;
+    }
+
+    .eveb:hover {
+      transform: translateY(15px);
+      color: #1D1886;
+      border: 3px solid black;
+      transition: 0.8s;
+      border-radius: 10px;
+    }
+
+    .eveb:hover:before {
+      transform: scaleY(1);
+      transition: transform 0.5s;
+      transform-origin: bottom;
+    }
+
+    .eveb:hover:after {
+      transform: scaleY(1);
+      transition: transform 2s;
+      transform-origin: bottom;
+    }
+
+    .ripple-effect {
+      width: 0;
+      height: 0;
+      background: rgba(0, 0, 0, 0.6);
+      transform: scale(0);
+      opacity: 1;
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .ripple-animation {
+      animation: ripple-drop 0.4s cubic-bezier(0, 0, 0.3, 1);
+    }
+
+    @keyframes ripple-drop {
+      100% {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      box-sizing: border-box;
+      border: 2px solid black;
+      border-radius: 10px;
+      margin: 50px;
+      cursor: not-allowed;
+    }
+
+    .asl {
+      border: 3px solid black;
+      padding-top: 10px;
+      border-radius: 5px;
+      background: cyan;
+      width: 150px;
+      height: 35px;
+      font-size: 25px;
+      text-transform: uppercase;
+      font-family: 'Montserrat';
+    }
+
+    p {
+      font-size: 18px;
+      color: black;
+      font-weight: 600;
+      font-family: 'Ubuntu', sans-serif;
+      text-align: center;
+    }
+
+    .sh2 {
+      border: 3px solid black;
+      border-radius: 5px;
+      background: cyan;
+      width: 150px;
+      overflow: hidden;
+      height: 35px;
+      padding-top: 10px;
+    }
+
+    .loader {
+      position: fixed;
+      z-index: 99;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .loader>img {
+      width: 100px;
+    }
+
+    .loader.hidden {
+      animation: fadeOut 5s;
+      animation-fill-mode: forwards;
+
+    }
+
+    @keyframes fadeOut {
+      100% {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    img {
+      padding: 0px;
+      margin: 0px;
+    }
+
+    .stick {
+      position: sticky;
+      top: 0;
+      z-index: 80;
+    }
+
+    .parallax {
+      background: url('banner image.png') no-repeat;
+      background-attachment: fixed;
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+    }
+
+    .parallax-inner {
+      padding-top: 15%;
+      padding-bottom: 14%;
+    }
+
+    .social-icons {
+      position: fixed;
+      top: 28.5%;
+      left: 0;
+      z-index: 81;
+    }
+
+    .social-icons li {
+      list-style: none;
+      transform: translateX(-39px);
+    }
+
+    .social-icons li i {
+      transition: 0.5s;
+    }
+
+    .social-icons li i:hover {
+      width: 160px;
+      padding-left: 60px;
+      color: black;
+    }
+
+    .social-icons li .fa-youtube {
+      box-sizing: border-box;
+      height: 50px;
+      width: 80px;
+      padding-top: 11px;
+      padding-left: 20px;
+      font-size: 30px;
+      color: white;
+      background: red;
+    }
+
+    h3 {
+      font-family: 'Montserrat';
+      text-transform: uppercase;
+    }
+
+    .social-icons li .fa-reddit-alien {
+      box-sizing: border-box;
+      height: 50px;
+      width: 80px;
+      padding-top: 11px;
+      padding-left: 20px;
+      font-size: 30px;
+      color: white;
+      background: #FF2828;
+    }
+
+    .social-icons li .fa-pinterest-p {
+      box-sizing: border-box;
+      height: 50px;
+      width: 80px;
+      padding-top: 11px;
+      padding-left: 20px;
+      font-size: 30px;
+      color: white;
+      background: #FF0000;
+    }
+
+    .social-icons li .fa-instagram {
+      box-sizing: border-box;
+      height: 50px;
+      width: 80px;
+      padding-top: 11px;
+      padding-left: 20px;
+      font-size: 30px;
+      color: white;
+      background: linear-gradient(to right, orange, purple);
+    }
+
+    .detailsbtn {
+      width: 200px;
+      height: 35px;
+      border: 2px solid black;
+      background: #fff;
+      margin: 40px;
+      padding: 5px;
+      font-size: 18px;
+      font-family: 'Ubuntu', sans-serif;
+      cursor: pointer;
+      transition: 0.5s;
+    }
+
+    .detailsbtn:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      background: black;
+      z-index: -1;
+      transform: scaleX(0);
+      transition: transform 0.5s;
+      transform-origin: top;
+    }
+
+    .detailsbtn:hover {
+      color: white;
+      transform: translateX(0);
+    }
+
+    .detailsbtn:hover:before {
+      transform: scaleX(1);
+      transition: transform 0.5s;
+      transform-origin: bottom;
+    }
+
+    #hid {
+      display: none;
+    }
+
+    .gh {
+      color: #494949;
+      font-weight: 800;
+    }
+
+    h3 {
+      letter-spacing: 1px;
+      font-size: 22px;
+    }
+
+    .non-parallax {
+      display: none;
+    }
+
+    .image-mask {
+      background-size: cover;
+      background-image: url('text transform img.png');
+      background-position: center;
+      text-align: center;
+      -webkit-background-clip: text; 
+      -webkit-text-fill-color: transparent;
+      font-size: 5em;
+      user-select: none;
+      text-transform: uppercase;
+      font-family: 'Bangers';
+      margin: 10px;
+    }
+
+    .marquee {
+      height: 110px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .ianime {
+      animation: animate1 5s infinite;
+      animation-play-state: running;
+    }
+
+    .ianime:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes animate1 {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(1400%);
+      }
+    }
+
+    .bgimg1 {
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 510px;
+    }
+
+    .bgimg2 {
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 650px;
+    }
+
+    .bgimg3 {
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 510px;
+    }
+
+    .bgimg4 {
+      position: absolute;
+      z-index: -1;
+      width: 100%;
+      height: 490px;
+    }
+
+    .overlay {
+      z-index: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .star-rating {
+      border: 2px solid #76e8;
+      background: #0047D7;
+      display: flex;
+      flex-direction: row-reverse;
+      font-size: 1.5em;
+      justify-content: space-around;
+      padding: 0 .2em;
+      text-align: center;
+      width: 5em;
+    }
+
+    .submit {
+      padding: 2px;
+      height: 35px;
+      color: black;
+      font-size: 18px;
+      font-weight: 590;
+      font-family: 'Ubuntu', sans-serif;
+      width: 150px;
+      margin-bottom: 1em;
+      background: transparent;
+      border: 2px solid cyan;
+      box-sizing: border-box;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .submit:hover {
+      background: cyan;
+      color: white;
+      transition: 0.5s;
+    }
+
+    .star-rating input {
+      display: none;
+    }
+
+    .star-rating label {
+      color: #ccc;
+      cursor: pointer;
+    }
+
+    .star-rating :checked~label {
+      color: #f90;
+    }
+
+    .star-rating label:hover,
+    .star-rating label:hover~label {
+      color: #FC0;
+    }
+
+    .relink {
+      display: none;
+    }
+
+    #demo {
+      align-items: center;
+      width: 180px;
+      height: 40px;
+      border-radius: 50px;
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 20px;
+      padding-top: 18px;
+      box-shadow: -2px -2px 8px rgba(255, 255, 255, 1),
+        -2px -2px 12px rgba(255, 255, 255, 0.8),
+        inset 2px 2px 4px rgba(255, 255, 255, 0.5),
+        2px 2px 8px rgba(0, 0, 0, 0.45);
+    }
+
+    .merb {
+      padding: 15px;
+      font-size: 2.5em;
+      font-family: 'Montserrat';
+      background: none;
+      margin: 15px;
+      border: 3px solid orange;
+      box-sizing: border-box;
+      cursor: pointer;
+      transition: 0.5s all;
+      overflow: hidden;
+    }
+
+    .merb:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 100%;
+      z-index: -1;
+      background: linear-gradient(90deg, orange, yellow);
+      transform: scaleY(0);
+      transition: transform 0.5s;
+      transform-origin: top;
+    }
+
+    .merb .san:after {
+      content: '!';
+      position: absolute;
+      opacity: 0;
+      top: 10;
+      left: 140px;
+      transition: 0.8s;
+    }
+
+    .merb:hover .san {
+      padding-right: 35px;
+    }
+
+    .merb:hover .san:after {
+      opacity: 1;
+      right: 0;
+    }
+
+    .merb:hover {
+      border: none;
+      padding: 18px;
+      transform: translateX(0);
+      color: white;
+    }
+
+    .merb:hover:before {
+      transform: scaleY(1);
+      transition: transform 0.5s;
+      transform-origin: bottom;
+    }
+
+    sup {
+      font-family: 'Ubuntu';
+      text-transform: lowercase;
+      text-decoration: none;
+    }
+
+    /*Responsive*/
+    @media only screen and (max-width: 480px) {
+
+      .topnav a:not(:first-child),
+      .dropdown .dropbtn {
+        display: none;
+      }
+
+      .topnav a.icon {
+        float: right;
+        display: block;
+      }
+
+      .topnav.responsive {
+        position: relative;
+      }
+
+      .topnav.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+
+      h4 {
+        display: none;
+      }
+
+      .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+      }
+
+      .topnav.responsive {
+        float: none;
+      }
+
+      .topnav.responsive .dropdown-content {
+        position: relative;
+      }
+
+      .topnav.responsive .dropbtn {
+        display: block;
+        width: 100%;
+        text-align: left;
+      }
+
+      .dropdown {
+        display: none;
+      }
+
+      .parallax {
+        display: none;
+      }
+
+      .bgimg {
+        display: none;
+      }
+
+      .relink {
+        display: block;
+        padding: 20px;
+        border: 2px solid #555;
+        border-radius: 20px;
+      }
+
+      .reh3 {
+        font-family: 'Ubuntu', sans-serif;
+      }
+
+      .rediv a {
+        font-family: FontAwesome, 'Ubuntu', sans-serif;
+        text-decoration: none;
+        color: #555;
+        font-size: 50px;
+      }
+
+      .rediv:hover {
+        background: cyan;
+        border-radius: 10px;
+        transition: 0.5s;
+      }
+
+      .foreground {
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        width: 60%;
+        height: 600%;
+        background: rgba(255, 255, 255, 0.28);
+        position: absolute;
+        transform: skew(2.65deg);
+        z-index: 89;
+        pointer-events: none;
+      }
+
+      .san {
+        display: none;
+      }
+
+      .parallax-inner {
+        display: none;
+      }
+
+      .non-parallax {
+        display: block;
+        width: 100%;
+        height: 10em;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .rtable {
+        width: 100%;
+      }
+
+      .bhr {
+        width: 99%;
+      }
+
+      .domain {
+        display: none;
+      }
+
+      .qr1 {
+        width: 100%;
+      }
+
+      .social-icons {
+        display: none;
+      }
+
+      #topBtn {
+        background: transparent;
+        color: transparent;
+        pointer-events: none;
+      }
+
+      .image-mask {
+        font-size: 50px;
+      }
+    }
+
+    @media only screen and (min-width:481px) and (max-width:900px) {
+
+      .topnav a:not(:first-child),
+      .dropdown .dropbtn {
+        display: none;
+      }
+
+      .topnav a.icon {
+        float: right;
+        display: block;
+      }
+
+      .topnav.responsive {
+        position: relative;
+      }
+
+      .topnav.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+
+      .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+      }
+
+      .topnav.responsive {
+        float: none;
+      }
+
+      .topnav.responsive .dropdown-content {
+        position: relative;
+      }
+
+      .topnav.responsive .dropbtn {
+        display: block;
+        width: 100%;
+        text-align: left;
+      }
+
+      .dropdown {
+        display: none;
+      }
+
+      h4 {
+        width: 100%;
+        top: 2%;
+        left: 0;
+      }
+
+      .relink {
+        display: block;
+        padding: 20px;
+        border: 2px solid #555;
+        border-radius: 20px;
+      }
+
+      .reh3 {
+        font-family: 'Ubuntu', sans-serif;
+      }
+
+      .rediv a {
+        font-family: FontAwesome, 'Ubuntu', sans-serif;
+        text-decoration: none;
+        color: #555;
+        font-size: 50px;
+      }
+
+      .rediv:hover {
+        background: cyan;
+        border-radius: 10px;
+        transition: 0.5s;
+      }
+
+      .foreground {
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        width: 55%;
+        height: 600%;
+        background: rgba(255, 255, 255, 0.28);
+        position: absolute;
+        transform: skew(8deg);
+        z-index: 89;
+        pointer-events: none;
+      }
+
+      .san {
+        display: none;
+      }
+
+      .bgimg {
+        display: none;
+      }
+
+      .parallax {
+        display: none;
+      }
+
+      .parallax-inner {
+        display: none;
+      }
+
+      .non-parallax {
+        display: block;
+        width: 100%;
+        height: 10em;
+      }
+
+      #topBtn {
+        background: transparent;
+        color: transparent;
+        pointer-events: none;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .rtable {
+        width: 100%;
+      }
+
+      .bhr {
+        width: 99%;
+      }
+
+      .domain {
+        display: none;
+      }
+
+      .qr1 {
+        width: 100%;
+      }
+
+      .social-icons {
+        display: none;
+      }
+
+      .image-mask {
+        font-size: 50px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="sweetalert.min.js"></script>
+  <script src="https://fonts.googleapis.com/css?family=Montserrat:800|Ubuntu&display=swap"></script>
+  <script type="text/javascript">
+    window.addEventListener('load', () => {
+
+      const buttons = document.querySelectorAll('.ripple');
+      if (!buttons) return;
+
+      for (const button of buttons) {
+
+        button.addEventListener('click', (e) => {
+
+          const rippleEffect = button.querySelector('.ripple-effect');
+          if (rippleEffect) rippleEffect.remove();
+
+          const posX = button.offsetLeft;
+          const posY = button.offsetTop;
+          let buttonWidth = button.offsetWidth;
+          let buttonHeight = button.offsetHeight;
+
+          const span = document.createElement('span');
+          if (button.classList.contains('dark')) {
+            span.classList.add('ripple-effect-dark');
+          } else {
+            span.classList.add('ripple-effect');
+          }
+
+          button.appendChild(span);
+
+          if (buttonWidth >= buttonHeight) {
+            buttonHeight = buttonWidth;
+          } else {
+            buttonWidth = buttonHeight;
+          }
+
+          const x = e.pageX - posX - buttonWidth / 2;
+          const y = e.pageY - posY - buttonHeight / 2;
+
+          span.style.width = buttonWidth + 'px';
+          span.style.height = buttonHeight + 'px';
+          span.style.left = x + 'px';
+          span.style.top = y + 'px';
+
+          span.classList.add('ripple-animation');
+
+        });
+
+      }
+
+    });
+
+    function Navfunction() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+    $(document).ready(function () {
+
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > 40) {
+          $('#topBtn').fadeIn();
+        } else {
+          $('#topBtn').fadeOut();
+        }
+      });
+
+      $("#topBtn").click(function () {
+        $('html ,body').animate({ scrollTop: 0 }, 400);
+      });
+    });
+
+    var countDownDate = new Date("July 26,2020").getTime();
+    var x = setInterval(function () {
+      var now = new Date().getTime();
+      var distance = countDownDate - now;
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+        + minutes + "m ";
+
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById('demo').innerHTML = "Sorry! the event has expired";
+        document.getElementById('demo').style.width = '300px';
+      }
+    }, 1000);
+
+    window.addEventListener("load", function () {
+      const loader = document.querySelector(".loader");
+      console.log(loader);
+      loader.className += " hidden";
+    });
+
+    function myShow() {
+      var x = document.getElementById("hid");
+      if (x.style.display === "block") {
+        x.style.display = "none";
+        document.getElementById("dt").innerHTML = "Click for more info"
+      } else {
+        x.style.display = "block";
+        document.getElementById("dt").innerHTML = "Click to hide"
+      }
+    }
+
+    function feedback() {
+      swal({
+        text: "Thank You For The Feedback!",
+        icon: "success",
+      });
+    }
+  </script>
+  <div class="responsive">
+    <div class="loader">
+      <img src="logo for me.gif" alt="Loading...">
+    </div>
+    <center><a id="topBtn"><i class="fas fa-arrow-up"></i></a></center>
+    <img src="banner image.png" class="non-parallax">
+    <section class="parallax">
+      <div class="parallax-inner"></div>
+    </section>
+    <div class="stick">
+      <div class="topnav" id="myTopnav">
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="downloads.html">Downloads</a>
+        <a href="portfolio.html">Portfolio</a>
+        <div class="dropdown">
+          <button class="dropbtn">Contents
+            <i class="fas fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#isro">ISRO</a>
+            <a href="#nasa">NASA</a>
+            <a href="#spacex">SpaceX</a>
+            <a href="#esa">ESA</a>
+            <a href="#event">Event</a>
+            <a href="#code">Scan code</a>
+            <a href="#merch">Merch</a>
+            <a href="#rate">Feedback</a>
+          </div>
+        </div>
+        <a href="javascript:void(0);" style="font-size:18px;" class="icon" onclick="Navfunction()"><i
+            class="fas fa-bars"></i></a>
+      </div>
+    </div>
+    <div class="social-icons">
+      <ul>
+        <a href="https://www.youtube.com/shivanach45" target="_blank">
+          <li><i class="fab fa-youtube"></i></li>
+        </a>
+        <a href="https://www.reddit.com/user/Shiva_Nach" target="_blank">
+          <li><i class="fab fa-reddit-alien"></i></li>
+        </a>
+        <a href="https://www.instagram.com/shivanach45/" target="_blank">
+          <li><i class="fab fa-instagram"></i></li>
+        </a>
+        <a href="https://www.pinterest.ca/nach0182/" target="_blank">
+          <li><i class="fab fa-pinterest-p"></i></li>
+        </a>
+      </ul>
+    </div>
+    <div class="marquee"><img src="front image.png" class="ianime"></div>
+    <br>
+    <center>
+      <h4>Welcome to ShivaNach.com,Have a great day!&nbsp<span class="closebtn"
+          onclick="this.parentElement.style.display='none';">&times;</span></h4>
+    </center>
+    <center>
+      <div class="image-mask">ShivaNach on Science & Technology</div>
+    </center>
+    <center>
+      <table width="550" class="rtable">
+        <tr>
+          <td>Hi friends, in this website I've given the information on science and technology.So,please check it out!
+          </td>
+        </tr>
+        <tr>
+          <td>In this part of the website, I have given lots of information on rocket.These type of rockets have a
+            different name and model based on the type of engine,weight,strap boosters,etc.To know more about the
+            rockets just click a button below!!</td>
+        </tr>
+      </table>
+    </center>
+    <center>
+      <br>
+      <button class="detailsbtn" id="dt" onclick="myShow()">Click for more info</button>
+      <div id="hid">
+        <center>
+          <h2>What is a Rocket?</h2>
+        </center>
+        <table width="500" class="rtable">
+          <tr>
+            <td>A Rocket is a Launch Vehicle which can obtain thrust to go in outer space.Rocket engine if formed
+              entirely form propellant caried within the rocket before use.A rocket is a vehicle which has the ablity to
+              take probes,rovers satellites and even humans to space.It generally takes satellites to the orbits of the
+              earth such as LEO (Low Earth Orbit),GTO (Geosynchronous Transfer Orbit) and GEO (Geostationary Equatorial
+              Orbit). These are the main orbits where a satellite moves around the earth.Rockets are huge masses which
+              have many stages.The stages of the rocket breaks down as it reaches a particular point.An average rocket
+              has a height of a 15 story building! Ultimately,only the top capsule of the rocket ejects the satellites
+              into space.Most of the rocket has some strap boosters which gives an additional thurst to the rocket.There
+              are located in the side to the rocket and breaks down during the first stage.Each rocket made by different
+              space agencies have different builds.The main part of the rocket is the fuel tank,capsule,and the engine
+              are the three main parts of a rocket.As the stages breaks up,the next stage's engine gets activated and
+              starts up the rocket.</td>
+          </tr>
+        </table>
+      </div>
+    </center>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <hr>
+    <section id="isro">
+      <img src="ISRO site.jpg" class="bgimg1 bgimg">
+      <div class="overlay">
+        <br>
+        <br>
+        <br>
+        <br>
+        <center>
+          <h2 class="sh2">ISRO</h2>
+        </center>
+        <br>
+        <br>
+        <center>
+          <table width="500px" class="rtable">
+            <tr>
+              <td>In ISRO (Indian Space Research Oraganisation),the rockets are named after the 'SLV' system like
+                ASLV,PSLV,etc.There are many interesting facts about each rocket so please see the details given below!
+              </td>
+            </tr>
+          </table>
+        </center>
+        <br>
+        <br>
+        <center><a href="slv.html"><button class="btn"><b>SLV Rockets</b><span class="san"></span></button></a><a
+            href="aslv.html"><button class="btn"><b>ASLV Rockets</b><span class="san"></span></button></a></center>
+        <center><a href="pslv.html"><button class="btn"><b>PSLV Rockets</b><span class="san"></span></button></a><a
+            href="gslv.html"><button class="btn"><b>GSLV Rockets</b><span class="san"></span></button></a></center>
+        <br>
+        <hr class="bhr">
+      </div>
+    </section>
+    <section id="nasa">
+      <img src="NASA site.jpg" class="bgimg2 bgimg">
+      <div class="overlay">
+        <br>
+        <br>
+        <br>
+        <br>
+        <center>
+          <h2 class="sh2">NASA</h2>
+          </head>
+        </center>
+        <br>
+        <br>
+        <center>
+          <table width="500px" class="rtable">
+            <tr>
+              <td>NASA (National Aeronautics & Space Administration) is a government company which research on
+                space.Usually NASA doesn't make any rockets but buys rockets form many companies and do their
+                research.These examples given are the most frequently used rockets.</td>
+            </tr>
+          </table>
+        </center>
+        <br>
+        <br>
+        <center><a href="antares.html"><button class="btn"><b>Antares</b><span class="san"></span></button></a><a
+            href="atlas v.html"><button class="btn"><b>Atlas V</b><span class="san"></span></button></a></center>
+        <center><a href="delta iv.html"><button class="btn"><b>Delta IV</b><span class="san"></span></button></a><a
+            href="falcon-9.html"><button class="btn"><b>Falcon 9</b><span class="san"></span></button></a></center>
+        <center><a href="minotaur v.html"><button class="btn">Minotaur V<span class="san"></span></button></a><a
+            href="pegasus.html"><button class="btn">Pegasus<span class="san"></span></button></a></center>
+        <br>
+        <hr class="bhr">
+      </div>
+    </section>
+    <section id="spacex">
+      <img src="SpaceX site.jpg" class="bgimg3 bgimg">
+      <div class="overlay">
+        <br>
+        <br>
+        <br>
+        <br>
+        <center>
+          <h2 class="sh2">Space X</h2>
+        </center>
+        <br>
+        <br>
+        <center>
+          <table width="500px" class="rtable">
+            <tr>
+              <td>SpaceX is a private body which develops rockets and also researches on Space.The founder of this
+                company is Elon Musk.SpaceX has 3 main types of Rockets.They are Falcon 9,Falcon heavy and Dragon.To
+                know more about SpaceX's models,click the relavant button to know more details!</td>
+            </tr>
+          </table>
+        </center>
+
+        <center><a href="falcon-9.html"><button class="btn"><b>Falcon 9</b><span class="san"></span></button></a><a
+            href="falconheavy.html"><button class="btn"><b>Flacon heavy</b><span class="san"></span></button></a>
+        </center>
+        <center><a href="dragon.html"><button class="btn"><b>Dragon 2</b><span class="san"></span></button></a></center>
+      </div>
+    </section>
+    <hr class="bhr">
+    <section id="esa">
+      <img src="ESA site.jpg" class="bgimg4 bgimg">
+      <div class="overlay">
+        <br>
+        <br>
+        <br>
+        <br>
+        <center>
+          <h2 class="sh2">ESA</h2>
+        </center>
+        <br>
+        <br>
+        <center>
+          <table width="500px" class="rtable">
+            <tr>
+              <td>ESA (European Space Agency) is a space agency in Europe.It is a government space agency which has a
+                worldwide staff of about 2,200 in 2018.ESA space flight pregramme includes human spaceflight and
+                exploration of the space in the european countries.</td>
+            </tr>
+          </table>
+        </center>
+        <center><a href="ariane3.html"><button class="btn">Ariane 3<span class="san"></span></button></a><a
+            href="ariane4.html"><button class="btn">Ariane 4<span class="san"></span></button></a></center>
+        <center><a href="ariane5.html"><button class="btn">Arine 5<span class="san"></span></button></a></center>
+      </div>
+    </section>
+    <section id="event">
+      <hr class="bhr">
+      <hr class="bhr">
+      <br>
+      <br>
+      <center>
+        <h2 class="asl">Event</h2>
+      </center>
+      <center>
+        <p id="demo"></p>
+      </center>
+      <br>
+      <center>
+      </center>
+      <div class="container">
+        <br>
+        <center>
+          <h1 class="event">1<sup>st</sup>Anniversary!</h1>
+        </center>
+        <br>
+        <center><a><button class="eveb ripple">event
+            </button></a></center>
+      </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <hr class="bhr">
+      <hr class="bhr">
+    </section>
+    <section id="code">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <center>
+        <h2 class="sh2">Scan code</h2>
+      </center>
+      <br>
+      <center>
+        <h3>QR code</h3>
+      </center>
+      <center><img src="shivanach45 youtube qr code.png" height="200px" width="200px" class="qri"></center>
+      <p class="gh">Scan this code on your mobile phone to visit my YouTube channel.</p>
+      <br>
+      <br>
+      <br>
+      <center>
+        <h3>Instagram nametag code</h3>
+      </center>
+      <center><img src="shivatag.jpg" height="230px" width="220px" class="qri"></center>
+      <p class="gh">Scan this code on your mobile phone to visit my instagram page.</p>
+      <hr class="bhr">
+    </section>
+    <section id="merch">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <center>
+        <h2 class="sh2">Merch</h2>
+      </center>
+      <center>
+        <p>This is a link to my official merchandise store. Please check it out and buy!</p>
+      </center>
+      <center><a href="https://teespring.com/stores/shiva-nach-merch" target="_blank"><button class="merb">MERCH<span
+              class="san"></span></button></a></center>
+    </section>
+    <hr>
+    <section id="rate">
+      <br>
+      <form name="Rate" action="https://formspree.io/xgeknaar" onsubmit="feedback()" method="post">
+        <br>
+        <br>
+        <center>
+          <h2 class="sh2">Rate</h2>
+          <div class="star-rating">
+            <input type="radio" id="5-stars" name="rating-5" value="5" />
+            <label for="5-stars" class="star">&#9733;</label>
+            <input type="radio" id="4-stars" name="rating-4" value="4" />
+            <label for="4-stars" class="star">&#9733;</label>
+            <input type="radio" id="3-stars" name="rating-3" value="3" />
+            <label for="3-stars" class="star">&#9733;</label>
+            <input type="radio" id="2-stars" name="rating-2" value="2" />
+            <label for="2-stars" class="star">&#9733;</label>
+            <input type="radio" id="1-star" name="rating-1" value="1" />
+            <label for="1-star" class="star">&#9733;</label>
+          </div>
+          <br>
+          <br>
+          <input type="submit" value="submit" class="submit">
+        </center>
+      </form>
+    </section>
+    <br>
+    <br>
+    <div class="relink">
+      <center>
+        <h3 class="reh3">Follow me on these links!</h3>
+      </center>
+      <div class="rediv"><a href="https://www.youtube.com/shivanach45" target="_blank">&#xf167; &nbsp Youtube</a></div>
+      <br>
+      <div class="rediv"><a href="https://www.instagram.com/shivanach45/" target="_blank">&#xf16d; &nbsp Instagram</a>
+      </div>
+      <br>
+      <div class="rediv"><a href="https://www.reddit.com/user/Shiva_Nach/" target="_blank">&#xf281; &nbsp Reddit</a>
+      </div>
+      <br>
+      <div class="rediv"><a href="https://www.pinterest.ca/nach0182/" target="_blank">&#xf231; &nbsp Pinterest</a></div>
+      <br>
+      <br>
+      <br>
+    </div>
+    <center><img src="grey background.jpeg" height="250" width="1330" class="domain"></center>
+  </div>
+</body>
+
+</html>

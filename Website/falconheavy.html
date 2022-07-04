@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="front image.png" type="image/icon">
+	<title>ShivaNach:Falcon Heavy</title>
+	<script src="https://kit.fontawesome.com/e67d203734.js" crossorigin="anonymous"></script>
+	<style type="text/css">
+		@import url('https://fonts.googleapis.com/css?family=Montserrat:800|Ubuntu&display=swap');
+
+		* {
+			scrollbar-color: #555 transparent;
+			scrollbar-width: thin;
+		}
+
+		::-webkit-scrollbar {
+			width: 7.5px;
+		}
+
+		::-webkit-scrollbar-track {
+			background: transparent;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: #888;
+			border-radius: 30px;
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+			background: #555;
+		}
+
+		*::selection {
+			background: #7659e8;
+			color: white;
+		}
+
+		h1 {
+			font-family: 'Montserrat';
+			text-transform: uppercase;
+		}
+
+		h2 {
+			font-family: 'Ubuntu';
+		}
+
+		th {
+			font-family: 'Ubuntu', sans-serif;
+		}
+
+		.social-icons {
+			position: fixed;
+			top: 65%;
+			left: 0;
+			z-index: 81;
+		}
+
+		.social-icons li {
+			list-style: none;
+			transform: translateX(-39px);
+		}
+
+		.social-icons li i {
+			transition: 0.5s;
+		}
+
+		.social-icons li i:hover {
+			width: 160px;
+			padding-left: 60px;
+			color: black;
+		}
+
+		.social-icons li .fa-youtube {
+			box-sizing: border-box;
+			height: 50px;
+			width: 80px;
+			padding-top: 11px;
+			padding-left: 20px;
+			font-size: 30px;
+			color: white;
+			background: red;
+		}
+
+		.social-icons li .fa-reddit-alien {
+			box-sizing: border-box;
+			height: 50px;
+			width: 80px;
+			padding-top: 11px;
+			padding-left: 20px;
+			font-size: 30px;
+			color: white;
+			background: #FF2828;
+		}
+
+		.social-icons li .fa-pinterest-p {
+			box-sizing: border-box;
+			height: 50px;
+			width: 80px;
+			padding-top: 11px;
+			padding-left: 20px;
+			font-size: 30px;
+			color: white;
+			background: #FF0000;
+		}
+
+		.social-icons li .fa-instagram {
+			box-sizing: border-box;
+			height: 50px;
+			width: 80px;
+			padding-top: 11px;
+			padding-left: 20px;
+			font-size: 30px;
+			color: white;
+			background: linear-gradient(to right, orange, purple);
+		}
+
+		.loader {
+			position: fixed;
+			z-index: 99;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.loader>img {
+			width: 100px;
+		}
+
+		.loader.hidden {
+			animation: fadeOut 5s;
+			animation-fill-mode: forwards;
+
+		}
+
+		@keyframes fadeOut {
+
+			100% {
+				opacity: 0;
+				visibility: hidden;
+			}
+		}
+
+		.stick {
+			position: sticky;
+			top: 0;
+			box-sizing: border-box;
+			border: 1px solid transparent;
+			background: #91c9cf;
+			z-index: 79;
+		}
+
+		.box {
+			height: 450px;
+			border-radius: 10px;
+			width: 400px;
+			transform: translate(0, 0);
+			box-shadow: 10px 10px 5px #7659e8;
+			transition: 0.5s all;
+		}
+
+		.box:hover {
+			transform: scale(1.1);
+			filter: blur(2.5px);
+			transition: 0.5s all;
+		}
+
+		.box:hover~.content {
+			display: block;
+			transform: translateY(-110px);
+		}
+
+		.content {
+			display: none;
+			font-size: 2em;
+			text-decoration: none;
+			font-family: 'Montserrat';
+			text-transform: uppercase;
+			color: white;
+		}
+
+		.diffbtn {
+			padding: 2px;
+			height: 35px;
+			width: 340px;
+			font-size: 18px;
+			font-family: 'Ubuntu', sans-serif;
+			background: #add8e6;
+			margin: 15px;
+			border: 3px solid blue;
+			box-sizing: border-box;
+			border-radius: 10px;
+			cursor: pointer;
+			transition: 0.5s all;
+			overflow: hidden;
+		}
+
+		button {
+			padding: 2px;
+			height: 35px;
+			width: 290px;
+			font-size: 18px;
+			font-family: 'Ubuntu', sans-serif;
+			background: #add8e6;
+			margin: 15px;
+			border: 3px solid blue;
+			box-sizing: border-box;
+			border-radius: 10px;
+			cursor: pointer;
+			transition: 0.5s all;
+			overflow: hidden;
+		}
+
+		button:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 50%;
+			height: 100%;
+			background: grey;
+			z-index: -1;
+			transform: scaleX(0);
+			transition: transform 0.5s;
+			transform-origin: right;
+		}
+
+		button:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 50%;
+			height: 100%;
+			background: grey;
+			z-index: -1;
+			transform: scaleX(0);
+			transition: transform 0.5s;
+			transform-origin: left;
+		}
+
+		button:hover {
+			border: 3px solid black;
+			transform: translateX(0);
+			color: white;
+		}
+
+		button:hover:before {
+			transform: scaleX(1);
+			transition: transform 0.5s;
+			transform-origin: left;
+		}
+
+		button:hover:after {
+			transform: scaleX(1);
+			transition: transform 0.5s;
+			transform-origin: right;
+		}
+
+		.tab {
+			box-shadow: 10px 10px 5px #7659e8;
+			padding: 5px;
+			border-radius: 10px;
+			border: 3px solid #7659e8;
+		}
+
+		.gea,
+		th {
+			padding: 10px;
+			border: 2px solid #7659e8;
+		}
+
+		td,
+		th {
+			font-weight: 400;
+			font-size: 20px;
+			font-family: 'Ubuntu', sans-serif;
+		}
+
+		table {
+			padding: 5px;
+		}
+
+		@media only screen and (max-width: 480px) {
+			.social-icons {
+				display: none;
+			}
+
+			.stick {
+				position: static;
+				width: 100%;
+			}
+
+			.no {
+				display: none;
+			}
+
+			table {
+				width: 100%;
+			}
+
+			.box {
+				width: 100%;
+			}
+		}
+
+		@media only screen and (min-width: 481px) and (max-width: 900px) {
+			.social-icons {
+				display: none;
+			}
+
+			.stick {
+				position: static;
+				width: 100%;
+			}
+
+			.no {
+				display: none;
+			}
+
+			table {
+				width: 100%;
+			}
+
+			.box {
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<script type="text/javascript">
+		window.addEventListener("load", function () {
+			const loader = document.querySelector(".loader");
+			console.log(loader);
+			loader.className += " hidden";
+		});
+	</script>
+	<div class="loader">
+		<img src="logo for me.gif" alt="Loading...">
+	</div>
+	<br>
+	<br>
+	<div class="stick">
+		<center><a href="index.html"><button>Cilck here for homepage</button></a><a href="falcon-9.html"><button>Cilck
+					here for Falcon 9 Rockets</button></a><a href="dragon.html"><button class="diffbtn">Cilck here for
+					Dragon 2 SpaceCraft</button></a>
+	</div>
+	<div class="social-icons">
+		<ul>
+			<a href="https://www.youtube.com/shivanach45" target="_blank">
+				<li><i class="fab fa-youtube"></i>
+			</a></li>
+			<a href="https://www.reddit.com/user/Shiva_Nach" target="_blank">
+				<li><i class="fab fa-reddit-alien"></i></li>
+			</a>
+			<a href="https://www.instagram.com/shivanach45/" target="_blank">
+				<li><i class="fab fa-instagram"></i>
+			</a></li>
+			<a href="https://www.pinterest.ca/nach0182/" target="_blank">
+				<li><i class="fab fa-pinterest-p"></i></li>
+			</a>
+		</ul>
+	</div>
+	<br>
+	<br>
+	<center>
+		<h1>Falcon Heavy</h1>
+	</center>
+	<br>
+	<br>
+	<center>
+		<img src="falcon heavy.jpg" class="box">
+		<a href="https://en.wikipedia.org/wiki/Falcon_Heavy" class="content">Falcon Heavy Rocket</a>
+	</center>
+	<br>
+	<br>
+	<br>
+	<center>
+		<table width="805px">
+			<tr>
+				<td>Falcon Heavy is a large and a partially reusable heavy-lift launch vehicle designed and manufactured
+					by SpaceX.This Rocket has a strengthened Falcon 9-like first stage.It has a two additional first
+					stages as strap-on boosters.The Falcon heavy has one of the highest payload capacity of any
+					currently operational launch vehicle.Initially,this rocket was mainly designed to carry humans into
+					space beyond low Earth orbit.Later,it was not given a human-rating certification for carrying humans
+					to space.The falcon heavy was designed from the falcon 9's fuselage(body of the rocket).This rocket
+					has a height of 70m with a diameter of 3.66m.It has a width is 12.2m and has a mass of
+					1,420,000kg.It has 2 stages and can also have additional stages if required.It's payload to LEO is
+					aorund 64,000kg and has a payload of 27,000kg to GTO.</td>
+			</tr>
+		</table>
+	</center>
+	<br>
+	<div class="no">
+		<center>
+			<h2><i>Let's see some of the Launch Outcome of this Rocket.</i></h2>
+		</center>
+		<br>
+		<center>
+			<table width="1" class="tab">
+				<tr>
+					<th>Flight No.</th>
+					<th>Launch Date</th>
+					<th>Payload</th>
+					<th>Launch Outcome</th>
+				</tr>
+				<tr>
+					<td class="gea">1.</td>
+					<td class="gea">16th Feb,2018</td>
+					<td class="gea">Elon Musk's Tesla Roadster (1,250kg)</td>
+					<td class="gea" bgcolor="#40E719">Success</td>
+				</tr>
+				<tr>
+					<td class="gea">2.</td>
+					<td class="gea">11th April,2019</td>
+					<td class="gea">Arabsat-6A(6,465kg)</td>
+					<td class="gea" bgcolor="#40E719">Success</td>
+				</tr>
+				<tr>
+					<td class="gea">3.</td>
+					<td class="gea">25th June,2019</td>
+					<td class="gea">USAF-SP2 (3,700kg)</td>
+					<td class="gea" bgcolor="#40E719">Success</td>
+				</tr>
+			</table>
+		</center>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+</body>
+
+</html>

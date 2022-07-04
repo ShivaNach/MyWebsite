@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="front image.png">
+	<title>ShivaNach: Downloads</title>
+	<script src="https://kit.fontawesome.com/e67d203734.js" crossorigin="anonymous"></script>
+<style type="text/css">
+@import url('https://fonts.googleapis.com/css?family=Montserrat:800|Ubuntu&display=swap');
+*{
+  scrollbar-color:#555 transparent;
+  scrollbar-width: thin;
+}
+::-webkit-scrollbar {
+  width: 7.5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius:30px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+*::selection{
+	background:#7659e8;
+	color:white;
+}
+h1{
+ font-family:'Montserrat';
+ text-transform:uppercase;
+}
+a{
+	font-family:'Ubuntu',sans-serif;
+}
+.social-icons{
+	position:fixed;
+	top:65%;
+	left:0;
+	z-index: 81;
+}
+.social-icons li{
+	list-style: none;
+	transform:translateX(-39px);
+}
+.social-icons li i{
+	transition:0.5s;
+}
+.social-icons li i:hover{
+	width:160px;
+	padding-left:60px;
+	color:black;
+}
+.social-icons li .fa-youtube{
+	box-sizing: border-box;
+	height:50px;
+	width:80px;
+	padding-top:11px;
+	padding-left:20px;
+	font-size: 30px;
+	color:white;
+	background:red;
+}
+.social-icons li .fa-reddit-alien{
+	box-sizing: border-box;
+	height:50px;
+	width:80px;
+	padding-top:11px;
+	padding-left:20px;
+	font-size: 30px;
+	color:white;
+	background:#FF2828;
+}
+.social-icons li .fa-pinterest-p{
+  box-sizing: border-box;
+  height:50px;
+  width:80px;
+  padding-top:11px;
+  padding-left:20px;
+  font-size: 30px;
+  color:white;
+  background:#FF0000;
+}
+.social-icons li .fa-instagram{
+	box-sizing:border-box;
+	height:50px;
+	width:80px;
+	padding-top:11px;
+	padding-left:20px;
+	font-size: 30px;
+	color:white;
+	background:linear-gradient(to right,orange,purple);
+}
+.btn{
+padding:2px;
+height:35px;
+width:290px;
+font-size:18px;
+font-family:'Ubuntu',sans-serif;
+background:#add8e6;
+margin:15px;
+border:3px solid blue;
+box-sizing:border-box;
+border-radius:10px;
+cursor:pointer;
+transition:0.5s all;
+overflow:hidden;
+}
+.btn:before{
+content:'';
+position:absolute;
+top:0;
+left:0;
+width:50%;
+height:100%;
+background:grey;
+z-index:-1;
+transform:scaleX(0);
+transition:transform 0.5s;
+transform-origin:right;
+}
+.btn:after{
+content:'';
+position:absolute;
+top:0;
+right:0;
+width:50%;
+height:100%;
+background:grey;
+z-index:-1;
+transform:scaleX(0);
+transition:transform 0.5s;
+transform-origin:left;
+}
+.btn:hover{
+border:3px solid black;
+transform:translateX(0);
+color:white;
+}
+.btn:hover:before{
+transform:scaleX(1);
+transition:transform 0.5s;
+transform-origin:left;
+}
+.btn:hover:after{
+transform:scaleX(1);
+transition:transform 0.5s;
+transform-origin:right;
+}
+.loader{
+	position:fixed;
+	z-index: 99;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:white;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+.loader > img{
+	width:100px;
+}
+.loader.hidden{
+	animation:fadeOut 5s;
+	animation-fill-mode:forwards;
+
+}
+@keyframes fadeOut{
+
+	100%{
+		opacity:0;
+		visibility:hidden;
+	}
+}	
+td{
+	font-size:18px;
+	font-family:'Ubuntu',sans-serif;
+}
+.dropbtn {	
+  background-color: cyan;
+  position:relative;
+  height:50px;
+  width:80px;
+  color:black;
+  font-weight:600;
+  font-family: 'Ubuntu',sans-serif;
+  padding: 5px;
+  font-size: 18px;
+  border:2px solid black;
+  border-radius:10px;
+  box-shadow:0px 8px 16px 0px #7569E8;
+}
+
+.dropdown {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px #7569E8;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding:10px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+	background-color: #7569E8;
+	transition:0.5s;
+	color:white;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown:hover .dropbtn {
+	background-color:#4363BD;
+	color: white;
+	transition:0.5s;
+}
+.stick{
+	position: sticky;
+	top:0;
+	background: #91c9cf;
+	box-sizing:border-box;
+	border:none;
+	z-index: 80;
+}
+@media only screen and (max-width:480px) {
+	.social-icons{
+		display:none;
+	}
+	.stick{
+		width:100%;
+	}
+	table{
+		width:100%;
+	}
+	.dropbtn{
+		align-items: center;
+	}
+}
+@media only screen and (min-width:481px) and (max-width:900px) {
+	.social-icons{
+		display:none;
+	}
+	.stick{
+		width:100%;
+	}
+	table{
+		width:100%;
+	}
+	.dropbtn{
+		align-items: center;
+	}
+}
+</style>	
+</head>
+<body>
+<script type="text/javascript">
+	window.addEventListener("load",function() {
+    const loader = document.querySelector(".loader");
+    console.log(loader);
+    loader.className += " hidden";
+  });
+</script>
+<div class="loader">
+	<img src="logo for me.gif" alt="Loading...">
+</div>
+<br>
+<br>
+<div class="stick"><center><a href="index.html"><button class="btn">Click here for homepage</button></a></center></div>
+<center><h1>Downloads</h1></center>
+<div class="social-icons">
+   <ul>
+   <a href="https://www.youtube.com/shivanach45"target="_blank"><li><i class="fab fa-youtube"></i></a></li>
+   <a href="https://www.reddit.com/user/Shiva_Nach" target="_blank"><li><i class="fab fa-reddit-alien"></i></li></a>
+   <a href="https://www.instagram.com/shivanach45/" target="_blank"><li><i class="fab fa-instagram"></i></a></li>
+   <a href="https://www.pinterest.ca/nach0182/" target="_blank"><li><i class="fab fa-pinterest-p"></i></li></a>
+   </ul> 	
+</div>
+<br>
+<br>
+<center>
+	<table width="805px">
+		<tr>
+			<td>Hi friends,In this page you can download a PDF file which contains the information of the rocket.There are sections where you can choose what content do you want to download.Then,click the relavant button and download the content.So please start downloading...!</td>
+		</tr>
+	</table>
+</center>
+<br>
+<br>
+			<center>
+				<div class="dropdown">
+					<button class="dropbtn">ISRO</button>
+					<div class="dropdown-content">
+						<a href="ISRO.pdf" download>Full ISRO content</a>
+						<a href="SLV Rockets.pdf" download>SLV Rockets</a>
+						<a href="ASLV Rockets.pdf" download>ASLV Rockets</a>
+						<a href="PSLV Rockets.pdf" download>PSLV Rockets</a>
+						<a href="GSLV Rockets.pdf" download>GSLV Rockets</a>
+					</div>
+				</div>
+				<br>
+				<br>
+				<div class="dropdown">
+					<button class="dropbtn">NASA</button>
+					<div class="dropdown-content">
+						<a href="NASA Full content.pdf" download>Full NASA content</a>
+						<a href="Antarnes Rockets.pdf" download>Antares Rockets</a>
+						<a href="Atlas V Rockets.pdf" download>Atlas V Rockets</a>
+						<a href="Delta IV Rockets.pdf" download>Delta IV Rockets</a>
+						<a href="Falcon 9 Rockets.pdf" download>Falcon 9 Rockets</a>
+						<a href="Minotaur Rockets.pdf" download>Minotaur Rockets</a>
+						<a href="Pegasus Rockets.pdf" download>Pegasus Rockets</a>
+					</div>
+				</div>
+				<br>
+				<br>
+				<div class="dropdown">
+					<button class="dropbtn">SpaceX</button>
+					<div class="dropdown-content">
+						<a href="SpaceX Full content.pdf" download>Full SpaceX content</a>
+						<a href="Falcon 9 Rockets.pdf" download>Falcon 9 Rockets</a>
+						<a href="Falcon heavy Rockets.pdf" download>Falcon Heavy Rockets</a>
+						<a href="Dragon Spacecraft.pdf" download>Dragon Spacecraft</a>
+					</div>
+				</div>
+				<br>
+				<br>
+				<div class="dropdown">
+					<button class="dropbtn">ESA</button>
+					<div class="dropdown-content">
+						<a href="ESA Full content.pdf" download>Full ESA content</a>
+						<a href="Ariane 3 Rocket.pdf" download>Ariane 3 Rockets</a>
+						<a href="Ariane 4 Rocket.pdf" download>Ariane 4 Rockets</a>
+						<a href="Ariane 5 Rocket.pdf" download>Ariane 5 Rockets</a>
+					</div>
+				</div>
+			</center>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>			
+</body>
+</html>

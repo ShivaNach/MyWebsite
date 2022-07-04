@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Shiva Nach:GSLV</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image" a href="front image.png">
+	<script src="https://kit.fontawesome.com/e67d203734.js" crossorigin="anonymous"></script>
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Montserrat:800|Ubuntu&display=swap');
+
+		* {
+			scrollbar-color: #555 transparent;
+			scrollbar-width: thin;
+		}
+
+		::-webkit-scrollbar {
+			width: 7.5px;
+		}
+
+		::-webkit-scrollbar-track {
+			background: transparent;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: #888;
+			border-radius: 30px;
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+			background: #555;
+		}
+
+		*::selection {
+			background: #7659e8;
+			color: white;
+		}
+
+		h1 {
+			font-family: 'Montserrat';
+			text-transform: uppercase;
+		}
+
+		h3 {
+			font-family: 'Ubuntu';
+		}
+
+		.social-icons {
+			position: fixed;
+			top: 65%;
+			left: 0;
+			z-index: 81;
+		}
+
+		.social-icons li {
+			list-style: none;
+			transform: translateX(-39px);
+		}
+
+		.social-icons li i {
+			transition: 0.5s;
+		}
+
+		.social-icons li i:hover {
+			width: 160px;
+			padding-left: 60px;
+			color: black;
+		}
+
+		.social-icons li .fa-youtube {
+			box-sizing: border-box;
+			height: 50px;
+			width: 80px;
+			padding-top: 11px;
+			padding-left: 20px;
+			font-size: 30px;
+			color: white;
+			background: red;
+		}
+
+		.social-icons li .fa-reddit-alien {
+			box-sizing: border-box;
+			height: 50px;
+			width: 80px;
+			padding-top: 11px;
+			padding-left: 20px;
+			font-size: 30px;
+			color: white;
+			background: #FF2828;
+		}
+
+		.social-icons li .fa-pinterest-p {
+			box-sizing: border-box;
+			height: 50px;
+			width: 80px;
+			padding-top: 11px;
+			padding-left: 20px;
+			font-size: 30px;
+			color: white;
+			background: #FF0000;
+		}
+
+		.social-icons li .fa-instagram {
+			box-sizing: border-box;
+			height: 50px;
+			width: 80px;
+			padding-top: 11px;
+			padding-left: 20px;
+			font-size: 30px;
+			color: white;
+			background: linear-gradient(to right, orange, purple);
+		}
+
+		table {
+			padding: 5px;
+		}
+
+		td,
+		th {
+			font-weight: 400;
+			font-size: 20px;
+			font-family: 'Ubuntu', sans-serif;
+		}
+
+		button {
+			padding: 2px;
+			height: 35px;
+			width: 290px;
+			font-size: 18px;
+			font-family: 'Ubuntu', sans-serif;
+			background: #add8e6;
+			margin: 15px;
+			border: 3px solid blue;
+			box-sizing: border-box;
+			border-radius: 10px;
+			cursor: pointer;
+			transition: 0.5s all;
+			overflow: hidden;
+		}
+
+		button:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 50%;
+			height: 100%;
+			background: grey;
+			z-index: -1;
+			transform: scaleX(0);
+			transition: transform 0.5s;
+			transform-origin: right;
+		}
+
+		button:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 50%;
+			height: 100%;
+			background: grey;
+			z-index: -1;
+			transform: scaleX(0);
+			transition: transform 0.5s;
+			transform-origin: left;
+		}
+
+		button:hover {
+			border: 3px solid black;
+			transform: translateX(0);
+			color: white;
+		}
+
+		button:hover:before {
+			transform: scaleX(1);
+			transition: transform 0.5s;
+			transform-origin: left;
+		}
+
+		button:hover:after {
+			transform: scaleX(1);
+			transition: transform 0.5s;
+			transform-origin: right;
+		}
+
+		.box {
+			height: 400px;
+			border-radius: 10px;
+			width: 400px;
+			transform: translate(0, 0);
+			box-shadow: 10px 10px 5px #7659e8;
+			transition: 0.5s all;
+		}
+
+		.box:hover {
+			transform: scale(1.1);
+			filter: blur(2.5px);
+			transition: 0.5s all;
+		}
+
+		.box:hover~.content {
+			display: block;
+			transform: translateY(-80px);
+		}
+
+		.content {
+			display: none;
+			font-size: 2.5em;
+			text-decoration: none;
+			font-family: 'Montserrat';
+			text-transform: uppercase;
+			color: white;
+		}
+
+		.tab {
+			box-shadow: 10px 10px 5px #7659e8;
+			padding: 5px;
+			border-radius: 10px;
+			border: 3px solid #7659e8;
+		}
+
+		.gea,
+		th {
+			padding: 10px;
+			border: 2px solid #7659e8;
+		}
+
+		.loader {
+			position: fixed;
+			z-index: 99;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.loader>img {
+			width: 100px;
+		}
+
+		.loader.hidden {
+			animation: fadeOut 5s;
+			animation-fill-mode: forwards;
+
+		}
+
+		@keyframes fadeOut {
+
+			100% {
+				opacity: 0;
+				visibility: hidden;
+			}
+		}
+
+		.stick {
+			position: sticky;
+			top: 0;
+			box-sizing: border-box;
+			border: 1px solid transparent;
+			background: #91c9cf;
+			z-index: 80;
+		}
+
+		/*responsive*/
+		@media only screen and (max-width:480px) {
+			.social-icons {
+				display: none;
+			}
+
+			.stick {
+				position: static;
+				width: 100%;
+			}
+
+			table {
+				width: 100%;
+			}
+
+			.no {
+				display: none;
+			}
+
+			.box {
+				width: 100%;
+			}
+		}
+
+		@media only screen and (min-width:481px) and (max-width:900px) {
+			.social-icons {
+				display: none;
+			}
+
+			.stick {
+				position: static;
+				width: 100%;
+			}
+
+			table {
+				width: 100%;
+			}
+
+			.no {
+				display: none;
+			}
+
+			.box {
+				width: 100%;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<script type="text/javascript">
+		window.addEventListener("load", function () {
+			const loader = document.querySelector(".loader");
+			console.log(loader);
+			loader.className += " hidden";
+		});
+	</script>
+	<div class="loader">
+		<img src="logo for me.gif" alt="Loading...">
+	</div>
+	<br>
+	<br>
+	<div class="stick">
+		<center><a href="index.html"><button>Cilck here for homepage</button></a><a href="slv.html"><button>Click here
+					for SLV Rockets</button></a><a href="aslv.html"><button>Cilck here for ASLV Rockets</button></a><a
+				href="pslv.html"><button>Cilck here for PSLV Rockets</button></a></center>
+	</div>
+	<div class="social-icons">
+		<ul>
+			<a href="https://www.youtube.com/shivanach45" target="_blank">
+				<li><i class="fab fa-youtube"></i>
+			</a></li>
+			<a href="https://www.reddit.com/user/Shiva_Nach" target="_blank">
+				<li><i class="fab fa-reddit-alien"></i></li>
+			</a>
+			<a href="https://www.instagram.com/shivanach45/" target="_blank">
+				<li><i class="fab fa-instagram"></i>
+			</a></li>
+			<a href="https://www.pinterest.ca/nach0182/" target="_blank">
+				<li><i class="fab fa-pinterest-p"></i></li>
+			</a>
+		</ul>
+	</div>
+	<br>
+	<br>
+	<center>
+		<h1>GSLV Rocket</h1>
+	</center>
+	<br>
+	<br>
+	<center>
+		<img src="gslv img.jpg" class="box">
+		<a href="https://en.wikipedia.org/wiki/Geosynchronous_Satellite_Launch_Vehicle" class="content">GSLV Rocket</a>
+	</center>
+	<br>
+	<br>
+	<center>
+		<table width="850">
+			<tr>
+				<td>GSLV or the Geosynchronous Satellite Launch Vehicle is an expendable launch system operated by ISRO
+					(Indian Space Research Organisation).GSLV has been used in thirteen launches to date since its first
+					launch in 2001 to the most recent on 19th December 2018 carrying the GSAT-7A military communications
+					satellite.The GSLV project was initiated in 1990 with the objective of acquiring an Indian Launch
+					capability for geosynchronous satellites.GSLV uses major components that are already been proven in
+					the PSLV launchers in the form of the S125/S139 solid rocket booster and the liquid-fueled Vikas
+					engine.The GSLV was the first rocket to use Cryogenic Engines for its flight.The GSLV rocket has a
+					height of 49.13m,Diameter of 2.8m,Mass of 414,750kg and has 3 stages.</td>
+		</table>
+	</center>
+	<br>
+	<div class="no">
+		<center>
+			<h3><i>Now let's know about few launches of the GSLV Rockets</i></h3>
+		</center>
+		<br>
+		<center>
+			<h3>GSLV MK-I</h3>
+		</center>
+		<br>
+		<center>
+			<table border="1" class="tab">
+				<tr>
+					<th>Flight no.</th>
+					<th>Date</th>
+					<th>Launch site</th>
+					<th>Payload</th>
+					<th>Payload Mass</th>
+					<th>Orbit</th>
+					<th>Launch Outcome</th>
+				</tr>
+				<tr>
+					<td class="gea">D1</td>
+					<td class="gea">18th April 2001</td>
+					<td class="gea">First launch pad of Sriharikota</td>
+					<td class="gea">GSAT-1</td>
+					<td class="gea">1540kg</td>
+					<td class="gea">GTO</td>
+					<td class="gea" bgcolor="#DDD728">Partial failure</td>
+				</tr>
+				<tr>
+					<td class="gea">D2</td>
+					<td class="gea">8th May 2003</td>
+					<td class="gea">First launch pad of Sriharikota</td>
+					<td class="gea">GSAT-2</td>
+					<td class="gea">1825kg</td>
+					<td class="gea">GTO</td>
+					<td class="gea" bgcolor="#40E719">Success</td>
+				</tr>
+				<tr>
+					<td class="gea">F01</td>
+					<td class="gea">20th September 2004</td>
+					<td class="gea">Frist launch pad of Sriharikota</td>
+					<td class="gea">GSAT-3</td>
+					<td class="gea">1950kg</td>
+					<td class="gea">GTO</td>
+					<td bgcolor="#40E719">Success</td>
+				</tr>
+				<tr>
+					<td class="gea">F02</td>
+					<td class="gea">10th July 2006</td>
+					<td class="gea">Second launch pad of Sriharikota</td>
+					<td class="gea">INSAT-4C</td>
+					<td class="gea">2168kg</td>
+					<td class="gea">GTO</td>
+					<td bgcolor="#F74D31">Failure</td>
+				</tr>
+			</table>
+		</center>
+		<br>
+		<center>
+			<h3>GSLV MK-II</h3>
+		</center>
+		<br>
+		<center>
+			<table border="1" class="tab">
+				<tr>
+					<th>Flight no.</th>
+					<th>Date</th>
+					<th>Launch site</th>
+					<th>Payload</th>
+					<th>Payload Mass</th>
+					<th>Orbit</th>
+					<th>Launch Outcome</th>
+				</tr>
+				<tr>
+					<td class="gea">D3</td>
+					<td class="gea">15th April 2010</td>
+					<td class="gea">Second launch pad of Sriharikota</td>
+					<td class="gea">GSAT-4</td>
+					<td class="gea">2220kg</td>
+					<td class="gea">GTO</td>
+					<td class="gea" bgcolor="#F74D31">Failure</td>
+				</tr>
+				<tr>
+					<td class="gea">D5</td>
+					<td class="gea">5th January 2014</td>
+					<td class="gea">Second launch pad of Sriharikota</td>
+					<td class="gea">GSAT-14</td>
+					<td class="gea">1980kg</td>
+					<td class="gea">GTO</td>
+					<td class="gea" bgcolor="#40E719">Success</td>
+				</tr>
+				<tr>
+					<td class="gea">D6</td>
+					<td class="gea">27th August 2015</td>
+					<td class="gea">Second launch pad of Sriharikota</td>
+					<td class="gea">GSAT-6</td>
+					<td class="gea">2117kg</td>
+					<td class="gea">GTO</td>
+					<td class="gea" bgcolor="#40E719">Success</td>
+				</tr>
+				<tr>
+					<td class="gea">F05</td>
+					<td class="gea">8th September 2016</td>
+					<td class="gea">Second launch pad of Sriharikota</td>
+					<td class="gea">INSAT-3DR</td>
+					<td class="gea">2211kg</td>
+					<td class="gea">GTO</td>
+					<td class="gea" bgcolor="#40E719">Success</td>
+				</tr>
+			</table>
+		</center>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+</body>
+
+</html>

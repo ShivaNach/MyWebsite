@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Shiva Nach:PSLV</title>
+	<link rel="icon" type="image" a href="front image.png">
+	<script src="https://kit.fontawesome.com/e67d203734.js" crossorigin="anonymous"></script>
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Montserrat:800|Ubuntu&display=swap');
+
+		* {
+			scrollbar-color: #555 transparent;
+			scrollbar-width: thin;
+		}
+
+		::-webkit-scrollbar {
+			width: 7.5px;
+		}
+
+		::-webkit-scrollbar-track {
+			background: transparent;
+		}
+
+		::-webkit-scrollbar-thumb {
+			background: #888;
+			border-radius: 30px;
+		}
+
+		::-webkit-scrollbar-thumb:hover {
+			background: #555;
+		}
+
+		*::selection {
+			background: #7659e8;
+			color: white;
+		}
+
+		h1,
+		h2 {
+			font-family: 'Montserrat';
+			text-transform: uppercase;
+		}
+
+		h3 {
+			font-family: 'Ubuntu';
+		}
+
+		.social-icons {
+			position: fixed;
+			top: 65%;
+			left: 0;
+			z-index: 81;
+		}
+
+		.social-icons li {
+			list-style: none;
+			transform: translateX(-39px);
+		}
+
+		.social-icons li i {
+			transition: 0.5s;
+		}
+
+		.social-icons li i:hover {
+			width: 160px;
+			padding-left: 60px;
+			color: black;
+		}
+
+		.social-icons li .fa-youtube {
+			box-sizing: border-box;
+			height: 50px;
+			width: 80px;
+			padding-top: 11px;
+			padding-left: 20px;
+			font-size: 30px;
+			color: white;
+			background: red;
+		}
+
+		.social-icons li .fa-reddit-alien {
+			box-sizing: border-box;
+			height: 50px;
+			width: 80px;
+			padding-top: 11px;
+			padding-left: 20px;
+			font-size: 30px;
+			color: white;
+			background: #FF2828;
+		}
+
+		.social-icons li .fa-pinterest-p {
+			box-sizing: border-box;
+			height: 50px;
+			width: 80px;
+			padding-top: 11px;
+			padding-left: 20px;
+			font-size: 30px;
+			color: white;
+			background: #FF0000;
+		}
+
+		.social-icons li .fa-instagram {
+			box-sizing: border-box;
+			height: 50px;
+			width: 80px;
+			padding-top: 11px;
+			padding-left: 20px;
+			font-size: 30px;
+			color: white;
+			background: linear-gradient(to right, orange, purple);
+		}
+
+		table {
+			padding: 5px;
+		}
+
+		td,
+		th {
+			font-weight: 400;
+			font-size: 20px;
+			font-family: 'Ubuntu', sans-serif;
+		}
+
+		button {
+			padding: 2px;
+			height: 35px;
+			width: 290px;
+			font-size: 18px;
+			font-family: 'Ubuntu', sans-serif;
+			background: #add8e6;
+			margin: 15px;
+			border: 3px solid blue;
+			box-sizing: border-box;
+			border-radius: 10px;
+			cursor: pointer;
+			transition: 0.5s all;
+			overflow: hidden;
+		}
+
+		button:before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 50%;
+			height: 100%;
+			background: grey;
+			z-index: -1;
+			transform: scaleX(0);
+			transition: transform 0.5s;
+			transform-origin: right;
+		}
+
+		button:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 50%;
+			height: 100%;
+			background: grey;
+			z-index: -1;
+			transform: scaleX(0);
+			transition: transform 0.5s;
+			transform-origin: left;
+		}
+
+		button:hover {
+			border: 3px solid black;
+			transform: translateX(0);
+			color: white;
+		}
+
+		button:hover:before {
+			transform: scaleX(1);
+			transition: transform 0.5s;
+			transform-origin: left;
+		}
+
+		button:hover:after {
+			transform: scaleX(1);
+			transition: transform 0.5s;
+			transform-origin: right;
+		}
+
+		.box {
+			height: 500px;
+			border-radius: 10px;
+			width: 300px;
+			transform: translate(0, 0);
+			box-shadow: 10px 10px 5px #7659e8;
+			transition: 0.5s all;
+		}
+
+		.box:hover {
+			transform: scale(1.1);
+			filter: blur(2.5px);
+			transition: 0.5s all;
+		}
+
+		.box:hover~.content {
+			display: block;
+			transform: translateY(-260px);
+		}
+
+		.content {
+			display: none;
+			font-size: 2.5em;
+			text-decoration: none;
+			font-family: 'Montserrat';
+			text-transform: uppercase;
+			color: white;
+		}
+
+		.tab {
+			box-shadow: 10px 10px 5px #7659e8;
+			padding: 5px;
+			border-radius: 10px;
+			border: 3px solid #7659e8;
+		}
+
+		.gea,
+		th {
+			padding: 10px;
+			border: 2px solid #7659e8;
+		}
+
+		.loader {
+			position: fixed;
+			z-index: 99;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: white;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.loader>img {
+			width: 100px;
+		}
+
+		.loader.hidden {
+			animation: fadeOut 5s;
+			animation-fill-mode: forwards;
+
+		}
+
+		@keyframes fadeOut {
+
+			100% {
+				opacity: 0;
+				visibility: hidden;
+			}
+		}
+
+		.stick {
+			position: sticky;
+			top: 0;
+			box-sizing: border-box;
+			border: 1px solid transparent;
+			background: #91c9cf;
+			z-index: 80;
+		}
+
+		iframe {
+			border: 5px solid black;
+			box-shadow: 10px 10px 7px;
+			height: 315px;
+			width: 560px;
+		}
+
+		.fa-youtube-square {
+			font-size: 50px;
+			text-decoration: none;
+			margin: 0px 0px 0px 250px;
+			color: red;
+			overflow: hidden;
+		}
+
+		.fa-youtube-square:hover {
+			transition: 0.5s;
+			color: white;
+			background: red;
+			transform: translateX(-10px);
+		}
+
+		/*responsive*/
+		@media only screen and (max-width:480px) {
+			.social-icons {
+				display: none;
+			}
+
+			.stick {
+				position: static;
+				width: 100%;
+			}
+
+			table {
+				width: 100%;
+			}
+
+			.box {
+				width: 100%;
+			}
+
+			.no {
+				display: none;
+			}
+
+			.fa-youtube-square {
+				margin-left: 43%;
+			}
+
+			iframe {
+				height: 200px;
+				width: 300px;
+			}
+		}
+
+		@media only screen and (min-width:481px) and (max-width:900px) {
+			.social-icons {
+				display: none;
+			}
+
+			.stick {
+				position: static;
+				width: 100%;
+			}
+
+			table {
+				width: 100%;
+			}
+
+			.no {
+				display: none;
+			}
+
+			.box {
+				width: 100%;
+			}
+
+			iframe {
+				width: 100%;
+			}
+
+			.fa-youtube-square {
+				margin-left: 50%;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<script type="text/javascript">
+		window.addEventListener("load", function () {
+			const loader = document.querySelector(".loader");
+			console.log(loader);
+			loader.className += " hidden";
+		});
+	</script>
+	<div class="loader">
+		<img src="logo for me.gif" alt="Loading...">
+	</div>
+	<br>
+	<br>
+	<div class="stick">
+		<center><a href="index.html"><button>Cilck here for homepage</button></a><a href="slv.html"><button>Click here
+					for SLV Rockets</button></a><a href="aslv.html"><button>Cilck here for ASLV Rockets</button></a><a
+				href="gslv.html"><button>Cilck here for GSLV Rockets</button></a></center>
+	</div>
+	<div class="social-icons">
+		<ul>
+			<a href="https://www.youtube.com/shivanach45" target="_blank">
+				<li><i class="fab fa-youtube"></i>
+			</a></li>
+			<a href="https://www.reddit.com/user/Shiva_Nach" target="_blank">
+				<li><i class="fab fa-reddit-alien"></i></li>
+			</a>
+			<a href="https://www.instagram.com/shivanach45/" target="_blank">
+				<li><i class="fab fa-instagram"></i>
+			</a></li>
+			<a href="https://www.pinterest.ca/nach0182/" target="_blank">
+				<li><i class="fab fa-pinterest-p"></i></li>
+			</a>
+		</ul>
+	</div>
+	<br>
+	<br>
+	<center>
+		<h1>PSLV Rocket</h1>
+	</center>
+	<br>
+	<br>
+	<center>
+		<img src="PSLV image.jpg" class="box">
+		<a href="https://en.wikipedia.org/wiki/Polar_Satellite_Launch_Vehicle" class="content">PSLV Rocket</a>
+	</center>
+	<br>
+	<br>
+	<center>
+		<table width="850">
+			<tr>
+				<td>PSLV or the Polar Satellite Launch Vehicle is an expendable medium lift launch vehicle designed by
+					ISRO (Indian Space Research Organisation).It was developed to allow India to launch its IRS (Indian
+					Remote Sensing) satellites into Sun-synchronous orbits,a service that was,advent of the PSLV in
+					1993,commercially available only form Russia.The PSLV can also launch small size satellites into
+					Geostationary Transfer Orbit (GTO).Some notable payloads launched but PSLV include India's first
+					lunar probe Chandrayaan-1,India's first interplanetry mission,Mars orbiter mission (Mangalyaan)and
+					India's first space observatory,Astrosat,World's first rocket to deploy 104 satellites-The PSLV
+					C-37.Studies say that this vehicle is capable to deliver 600kg of payload to 550km from SHAR which
+					began in 1978.This vehicle has 2 strap-on boosters and has a height of 44m,diameter of 2.8m which
+					mass of average 282,000kg and has 4 stages.</td>
+			</tr>
+		</table>
+	</center>
+	<br>
+	<div class="no">
+		<center>
+			<h3><i>Now let's know about few launches of the PSLV Rocket</i></h3>
+		</center>
+		<br>
+		<center>
+			<table border="1" class="tab">
+				<tr>
+					<th>Variant</th>
+					<th>Launches</th>
+					<th bgcolor="#40E719">Successes</th>
+					<th bgcolor="#F74D31">Failures</th>
+					<th bgcolor="#DDD728">Partial Failures</th>
+				</tr>
+				<tr>
+					<td class="gea">PSLV-G</td>
+					<td class="gea">12</td>
+					<td class="gea" bgcolor="#40E719">10</td>
+					<td class="gea" bgcolor="#F74D31">1</td>
+					<td class="gea" bgcolor="#DDD728">1</td>
+				</tr>
+				<tr>
+					<td class="gea">PSLV-CA</td>
+					<td class="gea">13</td>
+					<td class="gea" bgcolor="#40E719">13</td>
+					<td class="gea" bgcolor="#F74D31">0</td>
+					<td class="gea" bgcolor="#DDD728">0</td>
+				</tr>
+				<tr>
+					<td class="gea">PSLV-XL</td>
+					<td class="gea">20</td>
+					<td class="gea" bgcolor="#40E719">19</td>
+					<td class="gea" bgcolor="#F74D31">1</td>
+					<td class="gea" bgcolor="#DDD728">0</td>
+				</tr>
+				<tr>
+					<td class="gea">PSLV-DL</td>
+					<td class="gea">1</td>
+					<td class="gea" bgcolor="#40E719">1</td>
+					<td class="gea" bgcolor="#F74D31">0</td>
+					<td class="gea" bgcolor="#DDD728">0</td>
+				</tr>
+				<tr>
+					<td class="gea">PSLV-QL</td>
+					<td class="gea">1</td>
+					<td class="gea" bgcolor="#40E719">1</td>
+					<td class="gea" bgcolor="#F74D31">0</td>
+					<td class="gea" bgcolor="#DDD728">0</td>
+				</tr>
+			</table>
+		</center>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<center>
+		<h2>A Video on PSLV Rockets from YouTube channel</h2>
+	</center>
+	<a href="https://www.youtube.com/watch?v=FYUkP1sDq80" target="_blank"><i class="fab fa-youtube-square"></i></a>
+	<center><iframe src="https://www.youtube.com/embed/FYUkP1sDq80" frameborder="0"
+			allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	</center>
+	<br>
+	<br>
+	<br>
+	<br>
+</body>
+
+</html>

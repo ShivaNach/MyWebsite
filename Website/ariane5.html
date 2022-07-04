@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="front image.png"  type="image/icon">
+	<title>ShivaNach: Ariane 5</title>
+	<script src="https://kit.fontawesome.com/e67d203734.js" crossorigin="anonymous"></script>
+<style type="text/css">
+@import url('https://fonts.googleapis.com/css?family=Montserrat:800|Ubuntu&display=swap');
+*{
+  scrollbar-color:#555 transparent;
+  scrollbar-width: thin;
+}
+::-webkit-scrollbar {
+  width: 7.5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius:30px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+*::selection{
+	background:#7659e8;
+	color:white;
+}
+h1{
+	font-family:'Montserrat';
+	text-transform:uppercase;
+}
+h3{
+	font-family:'Ubuntu';
+}
+.social-icons{
+	position:fixed;
+	top:65%;
+	left:0;
+	z-index: 81;
+}
+.social-icons li{
+	list-style: none;
+	transform:translateX(-39px);
+}
+.social-icons li i{
+	transition:0.5s;
+}
+.social-icons li i:hover{
+	width:160px;
+	padding-left:60px;
+	color:black;
+}
+.social-icons li .fa-youtube{
+	box-sizing: border-box;
+	height:50px;
+	width:80px;
+	padding-top:11px;
+	padding-left:20px;
+	font-size: 30px;
+	color:white;
+	background:red;
+}
+.social-icons li .fa-reddit-alien{
+	box-sizing: border-box;
+	height:50px;
+	width:80px;
+	padding-top:11px;
+	padding-left:20px;
+	font-size: 30px;
+	color:white;
+	background:#FF2828;
+}
+.social-icons li .fa-pinterest-p{
+  box-sizing: border-box;
+  height:50px;
+  width:80px;
+  padding-top:11px;
+  padding-left:20px;
+  font-size: 30px;
+  color:white;
+  background:#FF0000;
+}
+.social-icons li .fa-instagram{
+	box-sizing:border-box;
+	height:50px;
+	width:80px;
+	padding-top:11px;
+	padding-left:20px;
+	font-size: 30px;
+	color:white;
+	background:linear-gradient(to right,orange,purple);
+}
+.loader{
+	position:fixed;
+	z-index: 99;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:white;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+.loader > img{
+	width:100px;
+}
+.loader.hidden{
+	animation:fadeOut 5s;
+	animation-fill-mode:forwards;
+
+}
+@keyframes fadeOut{
+
+	100%{
+		opacity:0;
+		visibility:hidden;
+	}
+}
+.stick{
+	position:sticky;
+	top:0;
+	box-sizing:border-box;
+	border:1px solid transparent;
+	background:#91c9cf;
+	z-index: 80;
+}	
+.box{
+	height:450px;
+	border-radius:10px;
+	width:300px;
+	transform: translate(0,0);
+	box-shadow:10px 10px 5px #7659e8;
+	transition:0.5s all;
+}
+.box:hover{
+	transform:scale(1.1);
+	filter: blur(2.5px);
+	transition: 0.5s all;
+}
+.box:hover ~ .content{
+	display:block;
+	transform:translateY(-250px);
+}
+.content{
+	display:none;
+	font-size:2em;
+	text-decoration:none;
+	font-family:'Montserrat';
+	text-transform:uppercase;
+	color:white;
+}
+button {
+padding:2px;
+height:35px;
+width:290px;
+font-size:18px;
+font-family:'Ubuntu',sans-serif;
+background:#add8e6;
+margin:15px;
+border:3px solid blue;
+box-sizing:border-box;
+border-radius:10px;
+cursor:pointer;
+transition:0.5s all;
+overflow:hidden;
+}
+button:before{
+content:'';
+position:absolute;
+top:0;
+left:0;
+width:50%;
+height:100%;
+background:grey;
+z-index:-1;
+transform:scaleX(0);
+transition:transform 0.5s;
+transform-origin:right;
+}
+button:after{
+content:'';
+position:absolute;
+top:0;
+right:0;
+width:50%;
+height:100%;
+background:grey;
+z-index:-1;
+transform:scaleX(0);
+transition:transform 0.5s;
+transform-origin:left;
+}
+button:hover{
+border:3px solid black;
+transform:translateX(0);
+color:white;
+}
+button:hover:before{
+transform:scaleX(1);
+transition:transform 0.5s;
+transform-origin:left;
+}
+button:hover:after{
+transform:scaleX(1);
+transition:transform 0.5s;
+transform-origin:right;
+}		
+.tab{
+	box-shadow:10px 10px 5px #7659e8;
+	padding:5px;
+	border-radius:10px;
+	border:3px solid #7659e8;
+}
+.gea,th{
+	padding:10px;
+	border:2px solid #7659e8;
+}
+td,th{
+font-weight:400;
+font-size:20px;
+font-family:'Ubuntu',sans-serif;
+}
+table{
+	padding:5px;
+}	
+@media only screen and (max-width: 480px) {
+	.social-icons{
+		display:none;
+	}
+	.stick{
+		position:static;
+		width:100%;
+	}
+	.no{
+		display:none;
+	}
+	table{
+		width:100%;
+	}
+	.box{
+		display:none;
+	}
+}
+@media only screen and (min-width: 481px) and (max-width: 900px) {
+	.social-icons{
+		display:none;
+	}
+	.stick{
+		position:static;
+		width:100%;
+	}
+	.no{
+		display:none;
+	}
+	table{
+		width:100%;
+	}
+	.box{
+		width:100%;
+	}
+}
+</style>	
+</head>
+<body>
+<script type="text/javascript">
+	window.addEventListener("load",function() {
+		const loader = document.querySelector(".loader");
+		console.log(loader);
+		loader.className += " hidden";
+	});
+</script>
+<div class="loader">
+ 	<img src="logo for me.gif" alt="loading...">
+ </div>	
+ <br>
+ <br>
+ 	<div class="stick"><center><a href="index.html"><button>Cilck here for homepage</button></a><a href="ariane3.html"><button>Cilck here for Ariane 3 Rockets</button></a><a href="ariane4.html"><button>Cilck here for Ariane 4 Rockets</button></a></div>
+ <div class="social-icons">
+   <ul>
+   <a href="https://www.youtube.com/shivanach45"target="_blank"><li><i class="fab fa-youtube"></i></a></li>
+   <a href="https://www.reddit.com/user/Shiva_Nach" target="_blank"><li><i class="fab fa-reddit-alien"></i></li></a>
+   <a href="https://www.instagram.com/shivanach45/" target="_blank"><li><i class="fab fa-instagram"></i></a></li>
+   <a href="https://www.pinterest.ca/nach0182/" target="_blank"><li><i class="fab fa-pinterest-p"></i></li></a>
+   </ul> 	
+</div>		
+ <br>
+ <br>
+ 			<center><h1>Ariane 5 Rocket</h1></center>
+ <br>
+ <br>
+ <center>
+	<img src="ariane 5.jpg" class="box">
+		<a href="https://en.wikipedia.org/wiki/Ariane_5" class="content">Ariane 5 Rocket</a>
+    </center>
+ <br>
+ <br>
+ <center>
+ 	<table width="805px">
+ 		<tr>
+ 			<td>Ariane 5 is an European heavy-lift launch vehicle that is part of the Ariane rocket family.This is also an expendable launch system designed by the French government space agency.It is used to deliver payloads into GTO orbit or LEO orbit.The Ariane project was instrumental in helping to overcome the European space crisis.Ariane 5 rockets are manufactured under the authority of ESA and the French space agency.Ariane 5 succeeded Ariane 4 but was not derived form it.Unlike all the ariane rockets,this rocket was a new model without any modifications of the other Arianes.Ariane 5's brogenic H173 main stage is called the EPC.It consists of a large tank 30.5m high with two compartments,one for liquid oxygen and the other for the liquid hydrogen.This rocket has a height of 46-52m with a diameter of 5.4m.This rocket has a mass of 777,000kg and has 2 stages.The payload to LEO is around 16,000kg and payload to GTO is 6,950kg.</td>
+ 		</tr>	
+ 	</table>
+ </center>
+ <br>
+ <br>
+ <div class="no">
+ <center><h3><i>Now,let's see the Launch outcome of this rocket.</i></h3></center>	
+ <center>
+ 	<table border="1" class="tab">
+ 		<tr>
+ 			<th>S.no</th>
+ 			<th>Date</th>
+ 			<th>Payload</th>
+ 			<th>Launch outcome</th>
+ 		</tr>
+ 		<tr>
+ 			<td class="gea">1.</td>
+ 			<td class="gea">4th June 1996</td>
+ 			<td class="gea">Cluster</td>
+ 			<td class="gea" bgcolor="#f74d31">Failure</td>
+ 		</tr>
+ 		<tr>
+ 			<td class="gea">2.</td>
+ 			<td class="gea">30th October 1997</td>
+ 			<td class="gea">MaqSat-H,TEAMSAT,MaqSat-B,YES</td>
+ 			<td class="gea" bgcolor="#ddd728">Partial Failure</td>
+ 		</tr>
+ 		<tr>
+ 			<td class="gea">3.</td>
+ 			<td class="gea">21st October 1998</td>
+ 			<td class="gea">MaqSAt-3,ARD</td>
+ 			<td class="gea" bgcolor="#40e719">Success</td>
+ 		</tr>
+ 		<tr>
+ 			<td class="gea">4.</td>
+ 			<td class="gea">10th December 1999</td>
+ 			<td class="gea">XMM-Newton</td>
+ 			<td class="gea" bgcolor="#40e719">Success</td>
+ 		</tr>
+ 		<tr>
+ 			<td class="gea">5.</td>
+ 			<td class="gea">21st March 2000</td>
+ 			<td class="gea">INSAT-3B,AsiaStar</td>
+ 			<td class="gea" bgcolor="#40e719">Success</td>
+ 		</tr>
+ 	</table>
+ </center>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</body>
+</html>

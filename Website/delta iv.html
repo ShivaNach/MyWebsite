@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="front image.png" type="icon/image">
+	<title>ShivaNach: Delta IV</title>
+	<script src="https://kit.fontawesome.com/e67d203734.js" crossorigin="anonymous"></script>
+</head>
+<style type="text/css">
+@import url('https://fonts.googleapis.com/css?family=Montserrat:800|Ubuntu&display=swap');
+*{
+  scrollbar-color:#555 transparent;
+  scrollbar-width: thin;
+}
+::-webkit-scrollbar {
+  width: 7.5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius:30px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+*::selection{
+	background: #7659e8;
+	color:white;
+}
+h1{
+	font-family:'Montserrat';
+	text-transform:uppercase;
+}
+h3{
+	font-family:'Ubuntu';
+}
+.social-icons{
+	position:fixed;
+	top:65%;
+	left:0;
+	z-index: 81;
+}
+.social-icons li{
+	list-style: none;
+	transform:translateX(-39px);
+}
+.social-icons li i{
+	transition:0.5s;
+}
+.social-icons li i:hover{
+	width:160px;
+	padding-left:60px;
+	color:black;
+}
+.social-icons li .fa-youtube{
+	box-sizing: border-box;
+	height:50px;
+	width:80px;
+	padding-top:11px;
+	padding-left:20px;
+	font-size: 30px;
+	color:white;
+	background:red;
+}
+.social-icons li .fa-google{
+	box-sizing: border-box;
+	height:50px;
+	width:80px;
+	padding-top:11px;
+	padding-left:20px;
+	font-size: 30px;
+	color:white;
+	background:green;
+}
+.social-icons li .fa-reddit-alien{
+  box-sizing: border-box;
+  height:50px;
+  width:80px;
+  padding-top:11px;
+  padding-left:20px;
+  font-size: 30px;
+  color:white;
+  background:#FF2828;
+}
+.social-icons li .fa-instagram{
+	box-sizing:border-box;
+	height:50px;
+	width:80px;
+	padding-top:11px;
+	padding-left:20px;
+	font-size: 30px;
+	color:white;
+	background:linear-gradient(to right,orange,purple);
+}
+table{
+padding:5px;
+}
+td,th{
+font-weight:400;
+font-size:20px;
+font-family:'Ubuntu',sans-serif;
+}
+button {
+padding:2px;
+height:35px;
+width:290px;
+font-size:18px;
+font-family:'Ubuntu',sans-serif;
+background:#add8e6;
+margin:15px;
+border:3px solid blue;
+box-sizing:border-box;
+border-radius:10px;
+cursor:pointer;
+transition:0.5s all;
+overflow:hidden;
+}
+button:before{
+content:'';
+position:absolute;
+top:0;
+left:0;
+width:50%;
+height:100%;
+background:grey;
+z-index:-1;
+transform:scaleX(0);
+transition:transform 0.5s;
+transform-origin:right;
+}
+button:after{
+content:'';
+position:absolute;
+top:0;
+right:0;
+width:50%;
+height:100%;
+background:grey;
+z-index:-1;
+transform:scaleX(0);
+transition:transform 0.5s;
+transform-origin:left;
+}
+button:hover{
+border:3px solid black;
+transform:translateX(0);
+color:white;
+}
+button:hover:before{
+transform:scaleX(1);
+transition:transform 0.5s;
+transform-origin:left;
+}
+button:hover:after{
+transform:scaleX(1);
+transition:transform 0.5s;
+transform-origin:right;
+}
+.box{
+	height:450px;
+	border-radius:10px;
+	width:300px;
+	transform: translate(0,0);
+	box-shadow:10px 10px 5px #7659e8;
+	transition:0.5s all;
+}
+.box:hover{
+	transform:scale(1.1);
+	filter: blur(2.5px);
+	transition: 0.5s all;
+}
+.box:hover ~ .content{
+	display:block;
+	transform:translateY(-310px);
+}
+.content{
+	display:none;
+	font-size:2em;
+	text-decoration:none;
+	font-family:'Montserrat';
+	text-transform:uppercase;
+	color:white;
+}
+.tab{
+	box-shadow:10px 10px 5px #7659e8;
+	padding:5px;
+	border-radius:10px;
+	border:3px solid #7659e8;
+}
+.gea,th{
+	padding:10px;
+	border:2px solid #7659e8;
+}
+.loader{
+	position:fixed;
+	z-index: 99;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:white;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+.loader > img {
+	width:100px;
+}
+.loader.hidden{
+	animation:fadeOut 5s;
+	animation-fill-mode:forwards;
+
+}
+@keyframes fadeOut{
+
+	100%{
+		opacity:0;
+		visibility:hidden;
+	}
+}
+.stick{
+	position:sticky;
+	top:0;
+	box-sizing: border-box;
+	border:1px solid transparent;
+	background:#91c9cf;
+	z-index: 80;
+}
+/*responsive*/
+@media only screen and (max-width:480px) {
+	.social-icons{
+		display:none;
+	}
+	.stick{
+		position:static;
+		width:100%;
+	}
+	.no{
+		display:none;
+	}
+	table{
+		width:100%;
+	}
+	.box{
+		width:100%;
+	}
+}
+@media only screen and (min-width:481px) and (max-width:900px) {
+ .social-icons{
+		display:none;
+	}
+	.stick{
+		position:static;
+		width:100%;
+	}
+	table{
+		width:100%;
+	}
+	.box{
+		width:100%;
+	}
+}
+</style>
+<body>
+<script type="text/javascript">
+	window.addEventListener("load",function() {
+		const loader = document.querySelector(".loader");
+		console.log(loader);
+		loader.className += " hidden";
+	});
+</script>
+<div class="loader">
+	<img src="logo for me.gif" alt="Loading...">		
+	</div>
+<br>
+<br>
+<div class="stick"><center><a href="index.html"><button>Cilck here for homepage</button></a><a href="antares.html"><button>Cilck here for Antares Rockets</button></a><a href="atlas v.html"><button>Cilck here for Atlas V Rockets</button></a><a href="falcon9.html"><button>Cilck here for Falcon 9 Rockets</button></a><a href="minotaur v.html"><button>Click here for Minotaur V Rockets</button></a><a href="pegasus.html"><button>Click here for Pegasus Rockets</button></a></center></div>	
+<div class="social-icons">
+   <ul>
+   <a href="https://www.youtube.com/shivanach45"target="_blank"><li><i class="fab fa-youtube"></i></a></li>
+   <a href="https://www.reddit.com/user/Shiva_Nach" target="_blank"><li><i class="fab fa-reddit-alien"></i></li></a>
+   <a href="https://www.google.com/search?client=firefox-b-d&sxsrf=ACYBGNQ69hc-_EyDPGU0n_xGEj_7ZchXPg%3A1570442357146&ei=dQybXfW_CMzLrQHZlrHQBw&q=shivanach45+youtube&oq=shivanach45+youtube&gs_l=psy-ab.3...14792.19127..19389...1.0..0.242.2755.0j7j7......0....1..gws-wiz.......35i39j33i21j33i160.ixm9UXEi8Ho&ved=0ahUKEwi1ztnW8YnlAhXMZSsKHVlLDHoQ4dUDCAo&uact=5" target="_blank"><li><i class="fab fa-google"></i></a></li>
+   <a href="https://www.instagram.com/shivanach45/" target="_blank"><li><i class="fab fa-instagram"></i></a></li>
+   </ul> 	
+</div>
+<br>
+<br>
+		<center><h1>Delta IV Rocket</h1></center>
+<br>
+<br>
+<center>
+	<img src="delta iv.jpg" class="box">
+		<a href="https://en.wikipedia.org/wiki/Delta_IV" class="content">Delta IV Rocket</a>
+    </center>
+<br>
+<br>
+	<center>
+		<table width="805">
+			<tr>
+				<td>Delta IV is an expendable launch system in the Delta rocket family.The main components were designed by Boeing's Defense and Security division.Delta IV vehicles are currently built in the United Launch Alliance (ULA).This rocket can launch commercial satellite payloads and also heavy payloads.One of the main purpose of this rocket is to launch U.S. military Payloads.This rocket uses liquid hydrogen to propel for launch.The minimum height of this rocket is 63m to a maximum of 72m.It has a diameter of 5m and has a mass of approx. 250,000kg.The payload to LEO for this rocket is 11,470kg and has a payload of 4,440kg to GTO.</td>
+			</tr>
+		</table>
+	</center>
+<br>
+<div class="no">
+		<center><h3><i>Now,let's see some of the Launch Outcome of this rocket</i></h3></center>
+	<center>
+		<table border="1" class="tab">
+			<tr>
+				<th>S.no.</th>
+				<th>Date</th>
+				<th>Payload</th>
+				<th>Launch Outcome</th>
+			</tr>
+			<tr>
+				<td class="gea">1.</td>
+				<td class="gea">20-11-2002</td>
+				<td class="gea">Eutletsat W5</td>
+				<td class="gea" bgcolor="#40e728">Success</td>
+			</tr>
+			<tr>
+				<td class="gea">2.</td>
+				<td class="gea">11-03-2003</td>
+				<td class="gea">Military communications satellite</td>
+				<td class="gea" bgcolor="#40e728">Success</td>
+			</tr>
+			<tr>
+				<td class="gea">3.</td>
+				<td class="gea">21-12-2004</td>
+				<td class="gea">Demostration Payload</td>
+				<td class="gea" bgcolor="#ddd728">Success</td>
+			</tr>
+			<tr>
+				<td class="gea">4.</td>
+				<td class="gea">16-07-2011</td>
+				<td class="gea">Navigation Satellite</td>
+				<td class="gea" bgcolor="#40e728">Success</td>
+			</tr>
+			<tr>
+				<td class="gea">5.</td>
+				<td class="gea">17-05-2014</td>
+				<td class="gea">Navigation Satellite</td>
+				<td class="gea" bgcolor="#40e728">Success</td>
+			</tr>
+		</table>
+	</center>
+</div>
+	<br>
+	<br>
+	<br>
+	<br>					
+</body>
+</html>
